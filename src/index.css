@@ -1,17 +1,39 @@
 :root {
   --blue: #0728c4;
   --purple: #5112d2;
+  --darkGray: #464646;
+  --darkerGray: #343434;
   --beige: #F3E8D7;
   --white: #ffffff;
   --grey: #c7c7c7;
   --brown: #533128;
+
+  --navHeight: 56px;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Open Sans", sans-serif;
+}
+
+p, span, a{
+  font-family: "Open Sans", sans-serif;
+}
+
+.main-img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--darkGray);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,22 +43,65 @@ code {
     monospace;
 }
 
+.app-wrapper {
+  background: var(--darkGray);
+}
+
+.page{
+  color: var(--white);
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+
+}
+
+.section{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.web-title{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  font-size: 25px;
+  padding: 0 1rem 0 1rem;
+}
+
+.title-link{
+  color: var(--white);
+  text-decoration: none;
+}
+
 #top-nav{
   color: var(--white);
-  background-image: linear-gradient(to bottom right, var(--purple), var(--blue
-  ));
+  background-image: linear-gradient(to bottom right, var(--purple) 15%, var(--blue));
+  box-shadow: 0 2px 9px black;
+  height: 58px;
+  width: 100%;
+  z-index: 1000;
 }
 
 .nav-container{
   width: 100%;
   display: inline-flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 1rem 0 1rem;
 }
 
 .nav-list{
   display: inline-flex;
   width: auto;
+}
+
+.nav-link{
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 .my-links{
@@ -49,10 +114,102 @@ code {
   text-decoration: none;
 }
 
+.tool-bar-toggle{
+  color: var(--white);
+  margin:0 1rem 0 0;
+  padding: 0;
+  height: auto;
+  background: none;
+  outline: none;
+  appearance: none;
+  border: none;
+}
+
+.tool-bar-toggle:hover{
+  appearance:none;
+  background: none;
+}
+
+.toolbar{
+  color: var(--white);
+  position: fixed;
+  z-index: 500;
+  top: var(--navHeight);
+  left:-100%;
+  background: var(--darkerGray);
+  width: 300px;
+  height: 100%;
+  box-shadow: 2px 0px 8px black;
+  transition: 850ms;
+}
+
+.toolbar.active{
+  left: 0;
+  transition: 350ms;
+}
+
+.tool-bar-container{
+  padding: 1rem 0 1rem 0;
+}
+
+.tool-bar-list{
+  display: block;
+  list-style: none;
+}
+
+.toolbar li{
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+}
+
+.nav-text{
+  text-decoration: none;
+  color: var(--white);
+
+  margin: 0 0 0 0.5rem;
+}
+
+.nav-header{
+  font-size: 20px;
+}
+
+.tool-bar-header{
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
 .viewport {
-  background: darkgray;
-  transition: all 0.3s ease;
-  margin-top: 60px;
+  display: flex;
+  margin-top: var(--navHeight);
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 50px;
+  justify-content: center;
+  transition: 400ms;
+}
+
+.viewport.compressed{
+  padding-left: 350px;
+
+}
+
+
+@media (max-width: 700px) {
+  .toolbar{
+    width: 100%;
+    left: 0;
+    top:-100%;
+  }
+
+  .toolbar.active{
+    top: var(--navHeight);
+    transition: 350ms;
+  }
 }
 
 @import 'bootstrap/dist/css/bootstrap.min.css';
