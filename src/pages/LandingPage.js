@@ -1,19 +1,23 @@
-
 import React from 'react';
 import './LandingPage.css';
+import { motion } from "framer-motion"
 
 const LandingPage = () =>{
 
     return (
-        <div className="page">
-            <div className="section">
-                <h1>Eli St. James</h1>
+        <>
+            <div className="background-texture">
+
             </div>
-            <hr/>
-            <div className="section">
-                ye
+            <div className="page">
+                <section>
+
+                </section>
+                <section></section>
+                <section></section>
             </div>
-        </div>
+        </>
+
     );
 }
 
