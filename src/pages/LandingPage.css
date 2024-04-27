@@ -1,0 +1,13 @@
+
+
+.landing-page{
+    background: var(--darkerGray);
+    width: 100%;
+    height: auto;
+    max-width: 1200px;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    border-radius: 1rem;
+}
+
+
+@import '../index.css';

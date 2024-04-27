@@ -10,12 +10,14 @@ import ProjectsPage from "./pages/ProjectsPage";
 import AccomplishmentsPage from "./pages/Accomplishments";
 
 function App() {
-  const isMobile = useMediaQuery({
-    query: '(max-width: 767px)'
-  });
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 768px)'
-  });
+
+    const isMobile = useMediaQuery({
+        query: '(max-width: 700px)'
+    });
+
+    const isSmallMobile = useMediaQuery({
+        query: '(max-width: 450px)'
+    });
 
   const handleToolBarToggle = () =>{
       setToolBarActive(!toolBarActive);
@@ -27,7 +29,7 @@ function App() {
         <Router>
             <NavBarComponent toggleToolBar={handleToolBarToggle}/>
             <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
-            <div className={toolBarActive ? "viewport compressed" : "viewport"}>
+            <div className={(toolBarActive &&  !isMobile) ? "viewport compressed" : "viewport"}>
                 <Routes>
                     <Route path="/" element={<LandingPage/>}/>
                     <Route path="/projects" element={<ProjectsPage/>}/>
