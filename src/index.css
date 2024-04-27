@@ -1,3 +1,12 @@
+:root {
+  --blue: #0728c4;
+  --purple: #5112d2;
+  --beige: #F3E8D7;
+  --white: #ffffff;
+  --grey: #c7c7c7;
+  --brown: #533128;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +20,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#top-nav{
+  color: var(--white);
+  background-image: linear-gradient(to bottom right, var(--purple), var(--blue
+  ));
+}
+
+.nav-container{
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
+}
+
+.nav-list{
+  display: inline-flex;
+  width: auto;
+}
+
+.my-links{
+  display: inline-flex;
+
+}
+
+.social-link-btn{
+  color: var(--white);
+  text-decoration: none;
+}
+
+.viewport {
+  background: darkgray;
+  transition: all 0.3s ease;
+  margin-top: 60px;
+}
+
+@import 'bootstrap/dist/css/bootstrap.min.css';

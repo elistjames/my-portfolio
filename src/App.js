@@ -1,23 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import { useMediaQuery } from 'react-responsive';
+import {Route, Router, Routes} from "react-router-dom";
+import NavBarComponent from "./components/NavBarComponent";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 767px)'
+  });
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 768px)'
+  });
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-wrapper">
+        <Router>
+            <NavBarComponent/>
+            <div className="viewport">
+                <Routes>
+                    <Route path="/" element={<LandingPage/>}/>
+                </Routes>
+            </div>
+        </Router>
     </div>
   );
 }
