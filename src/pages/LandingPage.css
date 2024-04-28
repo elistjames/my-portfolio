@@ -25,8 +25,10 @@
 
 .projects{
     display: inline-flex;
+    justify-content: center;
     align-items: center;
     height: 400px;
+    width: 100%;
     /*border: 1px solid white;*/
 }
 

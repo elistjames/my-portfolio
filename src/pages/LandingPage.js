@@ -52,16 +52,14 @@ const LandingPage = () =>{
                     </div>
                 </section>
                 <section>
-                    <div className="div-inline-center">
-                        <div>
-                            <div className="header">
-                                Recent Projects
-                            </div>
-                            <div className="projects">
-                                {ProjectData.map((project, index) => (
-                                    <ProjectCardComponent key={index} title={project.title} description={project.description} images={project.images} url={project.url}/>
-                                ))}
-                            </div>
+                    <div className="span-div">
+                        <div className="header">
+                            Recent Projects
+                        </div>
+                        <div className="projects">
+                            {ProjectData.map((project, index) => (
+                                <ProjectCardComponent key={index} title={project.title} description={project.description} images={project.images} url={project.url}/>
+                            ))}
                         </div>
                     </div>
                 </section>

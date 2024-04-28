@@ -1,5 +1,6 @@
 :root {
   --purple: #5e00ff;
+  --lighterBlue: #005791;
   --blue: #0096ff;
   --darkGrayTrans: rgba(4, 7, 7, 0.37);
   --darkerBlue: #00030e;
@@ -121,6 +122,10 @@ section .header{
   align-items: center;
 }
 
+.span-div{
+  width: 100%;
+}
+
 .viewport {
   display: flex;
   padding-top: var(--navHeight);
@@ -161,7 +166,7 @@ section .header{
   width: 100%;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px var(--darkerBlue);
+  box-shadow: 0 2px 20px black;
 }
 
 .nav-container{
@@ -184,7 +189,7 @@ section .header{
 }
 
 .nav-btn-gradient{
-  background-image: linear-gradient(to right, var(--purple), var(--blue));
+  background-image: linear-gradient(to right, var(--purple), var(--lighterBlue));
   padding:2px;
   border-radius: 1.2rem;
 }
@@ -202,7 +207,7 @@ section .header{
 
 .nav-btn:hover{
   background: var(--darkerBlue);
-  box-shadow: inset 65px 0 50px 0 var(--purple), inset 150px 0 50px 0 var(--blue);
+  box-shadow: inset 55px 0 40px 0 var(--purple), inset 150px 0 30px 0 var(--blue);
 }
 
 .my-links{

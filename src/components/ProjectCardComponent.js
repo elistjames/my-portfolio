@@ -10,18 +10,18 @@ const ProjectCardComponent = ({title, description, images, url}) => {
             <Card className="project-card">
                 <Carousel className="card-images">
                     {images.map((image, index) => (
-                        <Carousel.Item key={index} interval={4000}>
-                            <Card.Img className="project-image" top src={image} alt="Project image"/>
+                        <Carousel.Item key={index} interval={5000}>
+                            <Card.Img className="project-image" src={image.data} alt="Project image" style={{objectFit: image.fit}}/>
                         </Carousel.Item>
                     ))}
                 </Carousel>
                 <Card.Body>
                     <Card.Title id="card-title">{title}</Card.Title>
                     <p>{description}</p>
-                    <div className="card-btn-container">
-                        <Button className="card-btn">Read more</Button>
-                    </div>
                 </Card.Body>
+                <div className="card-btn-container">
+                    <Button id="card-btn">Read more</Button>
+                </div>
             </Card>
         </div>
 
