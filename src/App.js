@@ -8,6 +8,7 @@ import ToolBarComponent from "./components/ToolBarComponent";
 import {useRef, useState} from "react";
 import ProjectsPage from "./pages/ProjectsPage";
 import AccomplishmentsPage from "./pages/Accomplishments";
+import {Image} from "react-bootstrap";
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
       setToolBarActive(!toolBarActive);
   }
 
-  const [toolBarActive, setToolBarActive] = useState(true);
+  const [toolBarActive, setToolBarActive] = useState(false);
   return (
     <div className="app-wrapper">
         <Router>

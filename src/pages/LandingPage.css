@@ -9,5 +9,28 @@
     border-radius: 1rem;
 }
 
+.title{
+    font-family: "Montserrat", "Poppins", "Open Sans", sans-serif;
+    font-size: 7rem;
+    font-weight: bold;
+}
+
+.abstract{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.projects{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+    /*border: 1px solid white;*/
+}
+
 
 @import '../index.css';
