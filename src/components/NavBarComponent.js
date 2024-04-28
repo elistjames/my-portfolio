@@ -24,29 +24,15 @@ const NavBarComponent = ({toggleToolBar}) =>{
     return(
         <div id="top-nav" data-bs-theme="dark" fixed="top">
             <div className="nav-container">
-                <div className="nav-list">
-                    {isSmallMobile &&
-                        <Button className="tool-bar-toggle" onClick={handleToggleToolBar}>
-                            <BsList size={30}></BsList>
-                        </Button>
-                    }
-                    <div className="web-title">
-                        <a className="title-link" href="/">Eli_</a>
-                    </div>
-
-                    {!isMobile &&
-                        <div className="div-inline-center">
-
-                        </div>
-                    }
+                <div className="div-inline-center">
+                    <Button className="social-link-btn" variant="link" href="https://www.linkedin.com/in/eli-stjames/" target="_blank">
+                        <BsLinkedin size={25}></BsLinkedin>
+                    </Button>
+                    <Button className="social-link-btn" variant="link" href="https://github.com/elistjames" target="_blank">
+                        <BsGithub size={25}></BsGithub>
+                    </Button>
                 </div>
                 <div className="div-inline-center">
-                    {/*<Button className="social-link-btn" variant="link" href="https://www.linkedin.com/in/eli-stjames/" target="_blank">*/}
-                    {/*    <BsLinkedin size={20}></BsLinkedin>*/}
-                    {/*</Button>*/}
-                    {/*<Button className="social-link-btn" variant="link" href="https://github.com/elistjames" target="_blank">*/}
-                    {/*    <BsGithub size={20}></BsGithub>*/}
-                    {/*</Button>*/}
                     <Link className="nav-link" href="/">About Me</Link>
                     <Link className="nav-link" href="/projects">Projects</Link>
                     <Link className="nav-link" href="/accomplishments">Accomplishments</Link>
