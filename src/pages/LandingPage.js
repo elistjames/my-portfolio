@@ -3,15 +3,23 @@ import './LandingPage.css';
 import {motion, stagger, useAnimate} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
 import {LandingPageProjects} from "../data/ProjectData";
+import {useLocation, useParams} from "react-router-dom";
 
-const LandingPage = () =>{
+const LandingPage = ({landingSection}) =>{
     const [scope, animate] = useAnimate();
-
+    const {section} = useParams();
+    const currentRoute = useLocation();
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
     const abstractText = "Software Engineer,|,Full Stack Development,|,Machine Learning"
 
     useEffect(() => {
+        let result = currentRoute.pathname.slice(1);
+        landingSection = section;
+        const sectionElement = document.getElementById(section);
+        sectionElement.scrollIntoView({ block: "center" });
+
+
         const sequence = [
             [".code-intro1 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: 0})}],
             [".code-intro2 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: -0.2})}],
@@ -20,12 +28,18 @@ const LandingPage = () =>{
 
         ]
         animate(sequence);
-    }, []);
+
+    }, [section]);
+
+    useEffect(() => {
+        const sectionElement = document.getElementById(landingSection);
+        sectionElement.scrollIntoView({ block: "center" });
+    }, [landingSection]);
 
     return (
         <>
             <div className="page">
-                <section className="main">
+                <section id="landing-title" className="main">
                     <div ref={scope} className="div-inline-center">
                         <div className="intro-container">
                             <div className="code-intro-container">
@@ -49,7 +63,7 @@ const LandingPage = () =>{
                         </div>
                     </div>
                 </section>
-                <section>
+                <section id="about-me">
                     <div className="div-inline-center">
                         <div>
                             <div className="header landing">
@@ -68,7 +82,7 @@ const LandingPage = () =>{
                         </div>
                     </div>
                 </section>
-                <section>
+                <section id="landing-projects">
                     <div className="span-div">
                         <div className="header landing">
                             Recent Projects
