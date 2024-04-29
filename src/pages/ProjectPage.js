@@ -17,26 +17,61 @@ const ProjectPage = () =>{
                 switch(section.sectionType) {
                     case SectionType.main:
                         return(
-                            <section className="main">
-                                <div className="title-section-div">
+                            <section key={index} className="main">
+                                <div className="side-to-side-div main">
                                     <div className="page-title">
                                         {project.title}
                                     </div>
-                                    <div className="title-image-container">
-                                        <Image className="main-image" src={project.images[section.imageIndex].data}/>
+                                    <div className="image-container">
+                                        <Image className="section-image main" src={project.images[section.imageIndex].data} alt="project image"/>
                                     </div>
                                 </div>
                             </section>
                         );
                         break;
-                    case SectionType.video:
+                    case SectionType.multiParagraph:
+                        return (
+                            <section key={index}>
+                                <div className="span-div">
+                                    <div className="header">
+                                        {section.header}
+                                    </div>
+                                    <div className="blur-container">
+                                        {section.paragraphs.map((paragraph, index) => (
+                                            <div key={index}><p key={index}>{paragraph}</p><br/></div>
 
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+                        );
+                        break;
+                    case SectionType.image:
+                        return (
+                            <section key={index}>
+                                <div className="div-inline-center span-div">
+                                    <Image className="section-image fill" src={project.images[section.imageIndex].data} alt="project image"/>
+                                </div>
+                            </section>
+                        );
                         break;
                     case SectionType.imageParagraph:
 
                         break;
                     case SectionType.paragraphImage:
-
+                        return (
+                            <section key={index}>
+                                <div className="span-div">
+                                    <div className="header">{section.header}</div>
+                                    <div className="side-to-side-div">
+                                        <div className="paragraph-image-text blur-container">{section.body}</div>
+                                        <div className="image-container">
+                                            <Image className="section-image phone-gif" src={project.images[section.imageIndex].data} alt="project image" style={{objectFit: project.images[section.imageIndex].objectFit}}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        );
                         break;
                     case SectionType.roles:
 
@@ -46,10 +81,13 @@ const ProjectPage = () =>{
                         break;
                     default:
                         return (
-                            <section>
+                            <section key={index}>
                                 <div className="span-div">
                                     <div className="header">
                                         {section.header}
+                                    </div>
+                                    <div className="blur-container">
+                                        <p>{section.body}</p>
                                     </div>
                                 </div>
                             </section>

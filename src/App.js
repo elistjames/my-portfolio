@@ -7,7 +7,6 @@ import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
 import React, {useRef, useState} from "react";
 import ProjectPage from "./pages/ProjectPage";
-import AccomplishmentsPage from "./pages/Accomplishments";
 import {Image} from "react-bootstrap";
 
 function App() {
@@ -37,7 +36,6 @@ function App() {
                   <Routes>
                       <Route path="/" element={<LandingPage/>}/>
                       <Route path="/project/:id" element={<ProjectPage/>}/>
-                      <Route path="/accomplishments" element={<AccomplishmentsPage/>}/>
                   </Routes>
               </div>
           </Router>

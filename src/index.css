@@ -109,8 +109,8 @@ section .page-title{
 }
 
 section .header{
+  padding: 0 2rem 1rem 2rem;
   font-size: 2rem;
-  padding-bottom:1rem;
 }
 
 section .header.landing{
@@ -124,8 +124,11 @@ section .header.landing{
   width: auto;
   padding: 2rem;
   border-radius: 1rem;
-  text-align: center;
   box-shadow: 0 2px 30px black;
+}
+
+.blur-container.landing {
+  text-align: center;
 }
 
 .div-inline-center{

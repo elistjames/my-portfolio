@@ -30,10 +30,10 @@ const LandingPage = () =>{
                         <div className="intro-container">
                             <div className="code-intro-container">
                                 <div className="code-intro1 coding-font">
-                                    {codeIntro1.split("").map(char => (<span>{char}</span>))}
+                                    {codeIntro1.split("").map((char, index) => (<span key={index}>{char}</span>))}
                                 </div>
                                 <div className="code-intro2 coding-font">
-                                    {codeIntro2.split("").map(char => (<span>{char}</span>))}
+                                    {codeIntro2.split("").map((char, index) => (<span key={index}>{char}</span>))}
                                 </div>
                             </div>
                             <div className="title-container">
@@ -44,11 +44,6 @@ const LandingPage = () =>{
                                     {abstractText.split(",").map((text, index) => (
                                         <motion.span key={index} initial={{x:"50px"}}>{text}</motion.span>
                                     ))}
-                                    {/*<span>Software Engineer</span>*/}
-                                    {/*<span>|</span>*/}
-                                    {/*<span>Full Stack Development</span>*/}
-                                    {/*<span>|</span>*/}
-                                    {/*<span>Machine Learning</span>*/}
                                 </div>
                             </div>
                         </div>
@@ -60,7 +55,7 @@ const LandingPage = () =>{
                             <div className="header landing">
                                 About Me
                             </div>
-                            <div className="blur-container">
+                            <div className="blur-container landing">
                                 <p>I'm a recent graduate software engineer from the University of Calgary,
                                     with a strong passion for web development. Crafting dynamic web pages using
                                     frameworks like React and Angular is where I truly shine. But my skills don't

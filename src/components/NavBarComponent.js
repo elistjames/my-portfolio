@@ -33,9 +33,9 @@ const NavBarComponent = ({toggleToolBar}) =>{
                     </Button>
                 </div>
                 <div className="div-inline-center">
+                    <Link className="nav-link" href="/">Home</Link>
                     <Link className="nav-link" href="/">About Me</Link>
                     <Link className="nav-link" href="/projects">Projects</Link>
-                    <Link className="nav-link" href="/accomplishments">Accomplishments</Link>
                     <div className="nav-btn-gradient">
                         <Button className="nav-btn">Let's Connect</Button>
                     </div>
