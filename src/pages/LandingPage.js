@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './LandingPage.css';
 import {motion, stagger, useAnimate} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
-import {ProjectData} from "../data/ProjectData";
+import {LandingPageProjects} from "../data/ProjectData";
 
 const LandingPage = () =>{
     const [scope, animate] = useAnimate();
@@ -24,9 +24,6 @@ const LandingPage = () =>{
 
     return (
         <>
-            <div className="background-texture">
-
-            </div>
             <div className="page">
                 <section className="main">
                     <div ref={scope} className="div-inline-center">
@@ -60,7 +57,7 @@ const LandingPage = () =>{
                 <section>
                     <div className="div-inline-center">
                         <div>
-                            <div className="header">
+                            <div className="header landing">
                                 About Me
                             </div>
                             <div className="blur-container">
@@ -78,12 +75,12 @@ const LandingPage = () =>{
                 </section>
                 <section>
                     <div className="span-div">
-                        <div className="header">
+                        <div className="header landing">
                             Recent Projects
                         </div>
                         <div className="projects">
-                            {ProjectData.map((project, index) => (
-                                <ProjectCardComponent key={index} title={project.title} description={project.description} images={project.images} url={project.url}/>
+                            {LandingPageProjects.map((project, index) => (
+                                <ProjectCardComponent key={index} id={index} title={project.title} description={project.description} images={project.images}/>
                             ))}
                         </div>
                     </div>

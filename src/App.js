@@ -5,8 +5,8 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import NavBarComponent from "./components/NavBarComponent";
 import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
-import {useRef, useState} from "react";
-import ProjectsPage from "./pages/ProjectsPage";
+import React, {useRef, useState} from "react";
+import ProjectPage from "./pages/ProjectPage";
 import AccomplishmentsPage from "./pages/Accomplishments";
 import {Image} from "react-bootstrap";
 
@@ -26,19 +26,22 @@ function App() {
 
   const [toolBarActive, setToolBarActive] = useState(false);
   return (
-    <div className="app-wrapper">
-        <Router>
-            <NavBarComponent toggleToolBar={handleToolBarToggle}/>
-            <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
-            <div className={(toolBarActive &&  !isMobile) ? "viewport compressed" : "viewport"}>
-                <Routes>
-                    <Route path="/" element={<LandingPage/>}/>
-                    <Route path="/projects" element={<ProjectsPage/>}/>
-                    <Route path="/accomplishments" element={<AccomplishmentsPage/>}/>
-                </Routes>
-            </div>
-        </Router>
-    </div>
+      <div className="app-wrapper">
+          <div className="background-texture">
+
+          </div>
+          <Router>
+              <NavBarComponent toggleToolBar={handleToolBarToggle}/>
+              <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
+              <div className={(toolBarActive && !isMobile) ? "viewport compressed" : "viewport"}>
+                  <Routes>
+                      <Route path="/" element={<LandingPage/>}/>
+                      <Route path="/project/:id" element={<ProjectPage/>}/>
+                      <Route path="/accomplishments" element={<AccomplishmentsPage/>}/>
+                  </Routes>
+              </div>
+          </Router>
+      </div>
   );
 }
 

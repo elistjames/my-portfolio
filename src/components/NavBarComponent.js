@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { BsList } from "react-icons/bs";
-import face from "../images/me.jpg";
+import face from "../resources/me.jpg";
 import {Link} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
 

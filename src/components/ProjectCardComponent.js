@@ -2,7 +2,7 @@ import "./ProjectCard.css";
 import {Button, Card, Carousel} from "react-bootstrap";
 
 
-const ProjectCardComponent = ({title, description, images, url}) => {
+const ProjectCardComponent = ({id, title, description, images}) => {
 
 
     return(
@@ -15,12 +15,12 @@ const ProjectCardComponent = ({title, description, images, url}) => {
                         </Carousel.Item>
                     ))}
                 </Carousel>
-                <Card.Body>
+                <Card.Body style={{paddingBottom: 0}}>
                     <Card.Title id="card-title">{title}</Card.Title>
                     <p>{description}</p>
                 </Card.Body>
                 <div className="card-btn-container">
-                    <Button id="card-btn">Read more</Button>
+                    <Button id="card-btn" href={`project/${id}`}>Read more</Button>
                 </div>
             </Card>
         </div>
