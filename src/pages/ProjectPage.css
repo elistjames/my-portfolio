@@ -1,0 +1,49 @@
+
+
+
+.section-image{
+    width: 50%;
+}
+
+.section-image.main{
+    width: 100%;
+    object-fit: contain;
+    /*border: 4px solid white;*/
+    border-radius: 1.2rem;
+}
+
+.section-image.fill{
+    width: 80%;
+}
+
+.phone-gif{
+    /*transform: rotate(-90deg);*/
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.side-to-side-div{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.side-to-side-div.main{
+    justify-content: center;
+    padding: 0 2rem 0 2rem;
+}
+
+.paragraph-image-text{
+    width: 100%;
+}
+
+
+@import "../index.css";

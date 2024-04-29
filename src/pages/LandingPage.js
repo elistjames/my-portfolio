@@ -2,16 +2,24 @@ import React, {useEffect} from 'react';
 import './LandingPage.css';
 import {motion, stagger, useAnimate} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
-import {ProjectData} from "../data/ProjectData";
+import {LandingPageProjects} from "../data/ProjectData";
+import {useLocation, useParams} from "react-router-dom";
 
-const LandingPage = () =>{
+const LandingPage = ({landingSection}) =>{
     const [scope, animate] = useAnimate();
-
+    const {section} = useParams();
+    const currentRoute = useLocation();
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
     const abstractText = "Software Engineer,|,Full Stack Development,|,Machine Learning"
 
     useEffect(() => {
+        let result = currentRoute.pathname.slice(1);
+        landingSection = section;
+        const sectionElement = document.getElementById(section);
+        sectionElement.scrollIntoView({ block: "center" });
+
+
         const sequence = [
             [".code-intro1 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: 0})}],
             [".code-intro2 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: -0.2})}],
@@ -20,23 +28,26 @@ const LandingPage = () =>{
 
         ]
         animate(sequence);
-    }, []);
+
+    }, [section]);
+
+    useEffect(() => {
+        const sectionElement = document.getElementById(landingSection);
+        sectionElement.scrollIntoView({ block: "center" });
+    }, [landingSection]);
 
     return (
         <>
-            <div className="background-texture">
-
-            </div>
             <div className="page">
-                <section className="main">
+                <section id="landing-title" className="main">
                     <div ref={scope} className="div-inline-center">
                         <div className="intro-container">
                             <div className="code-intro-container">
                                 <div className="code-intro1 coding-font">
-                                    {codeIntro1.split("").map(char => (<span>{char}</span>))}
+                                    {codeIntro1.split("").map((char, index) => (<span key={index}>{char}</span>))}
                                 </div>
                                 <div className="code-intro2 coding-font">
-                                    {codeIntro2.split("").map(char => (<span>{char}</span>))}
+                                    {codeIntro2.split("").map((char, index) => (<span key={index}>{char}</span>))}
                                 </div>
                             </div>
                             <div className="title-container">
@@ -47,23 +58,18 @@ const LandingPage = () =>{
                                     {abstractText.split(",").map((text, index) => (
                                         <motion.span key={index} initial={{x:"50px"}}>{text}</motion.span>
                                     ))}
-                                    {/*<span>Software Engineer</span>*/}
-                                    {/*<span>|</span>*/}
-                                    {/*<span>Full Stack Development</span>*/}
-                                    {/*<span>|</span>*/}
-                                    {/*<span>Machine Learning</span>*/}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section>
+                <section id="about-me">
                     <div className="div-inline-center">
                         <div>
-                            <div className="header">
+                            <div className="header landing">
                                 About Me
                             </div>
-                            <div className="blur-container">
+                            <div className="blur-container landing">
                                 <p>I'm a recent graduate software engineer from the University of Calgary,
                                     with a strong passion for web development. Crafting dynamic web pages using
                                     frameworks like React and Angular is where I truly shine. But my skills don't
@@ -76,14 +82,14 @@ const LandingPage = () =>{
                         </div>
                     </div>
                 </section>
-                <section>
+                <section id="landing-projects">
                     <div className="span-div">
-                        <div className="header">
+                        <div className="header landing">
                             Recent Projects
                         </div>
                         <div className="projects">
-                            {ProjectData.map((project, index) => (
-                                <ProjectCardComponent key={index} title={project.title} description={project.description} images={project.images} url={project.url}/>
+                            {LandingPageProjects.map((project, index) => (
+                                <ProjectCardComponent key={index} id={index} title={project.title} description={project.description} images={project.images}/>
                             ))}
                         </div>
                     </div>

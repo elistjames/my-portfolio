@@ -28,6 +28,10 @@ p, span {
   font-family: "Poppins", sans-serif;
 }
 
+p{
+  margin: 0;
+}
+
 .coding-font{
   font-family: "Kode Mono", sans-serif;
 }
@@ -67,7 +71,7 @@ code {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(images/dark-background.jpg);
+  background-image: url(resources/dark-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -99,10 +103,19 @@ section.main{
   height: 90vh;
 }
 
+section .page-title{
+  width: 100%;
+  font-size: 5rem;
+}
+
 section .header{
-  text-align: center;
+  padding: 0 2rem 1rem 2rem;
+  font-size: 2rem;
+}
+
+section .header.landing{
   font-size: 3rem;
-  padding-bottom:1rem;
+  text-align: center;
 }
 
 .blur-container{
@@ -111,8 +124,11 @@ section .header{
   width: auto;
   padding: 2rem;
   border-radius: 1rem;
-  text-align: center;
   box-shadow: 0 2px 30px black;
+}
+
+.blur-container.landing {
+  text-align: center;
 }
 
 .div-inline-center{
