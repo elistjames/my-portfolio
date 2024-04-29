@@ -106,7 +106,6 @@ section .header{
 }
 
 .blur-container{
-
   backdrop-filter: blur(10px);
   height: auto;
   width: auto;

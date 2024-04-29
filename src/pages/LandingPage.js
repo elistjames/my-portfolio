@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './LandingPage.css';
-import { motion } from "framer-motion"
+import {motion, stagger, useAnimate} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
 import {ProjectData} from "../data/ProjectData";
 
 const LandingPage = () =>{
+    const [scope, animate] = useAnimate();
+
+    const codeIntro1= "> Hello World!"
+    const codeIntro2= "> I am:"
+    const abstractText = "Software Engineer,|,Full Stack Development,|,Machine Learning"
+
+    useEffect(() => {
+        const sequence = [
+            [".code-intro1 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: 0})}],
+            [".code-intro2 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: -0.2})}],
+            [".title", {opacity: 1, x: "0px"}, {duration: 0.5}, {ease: "easeOut"}],
+            [".abstract span", {opacity: 1, x: "0px"}, {delay: stagger(0.1, {startDelay: -0.3, ease: "easeOut"})}]
+
+        ]
+        animate(sequence);
+    }, []);
 
     return (
         <>
@@ -13,23 +29,32 @@ const LandingPage = () =>{
             </div>
             <div className="page">
                 <section className="main">
-                    <div className="div-inline-center">
-                        <div className="">
-                            <div>
-                                <div className="coding-font">> Hello World!</div>
-                                <div className="coding-font">> I am:</div>
+                    <div ref={scope} className="div-inline-center">
+                        <div className="intro-container">
+                            <div className="code-intro-container">
+                                <div className="code-intro1 coding-font">
+                                    {codeIntro1.split("").map(char => (<span>{char}</span>))}
+                                </div>
+                                <div className="code-intro2 coding-font">
+                                    {codeIntro2.split("").map(char => (<span>{char}</span>))}
+                                </div>
                             </div>
-                            <div className="title">Eli St. James</div>
-                            <div className="abstract">
-                                <span>Software Engineer</span>
-                                <span>|</span>
-                                <span>Full Stack Development</span>
-                                <span>|</span>
-                                <span>Machine Learning</span>
+                            <div className="title-container">
+                                <motion.div className="title" initial={{x:"50px"}}>
+                                    Eli St. James
+                                </motion.div>
+                                <div className="abstract">
+                                    {abstractText.split(",").map((text, index) => (
+                                        <motion.span key={index} initial={{x:"50px"}}>{text}</motion.span>
+                                    ))}
+                                    {/*<span>Software Engineer</span>*/}
+                                    {/*<span>|</span>*/}
+                                    {/*<span>Full Stack Development</span>*/}
+                                    {/*<span>|</span>*/}
+                                    {/*<span>Machine Learning</span>*/}
+                                </div>
                             </div>
-
                         </div>
-
                     </div>
                 </section>
                 <section>
