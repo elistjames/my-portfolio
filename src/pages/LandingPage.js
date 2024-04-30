@@ -2,9 +2,11 @@ import React, {useEffect, useRef} from 'react';
 import './LandingPage.css';
 import {motion, stagger, useAnimate, useInView} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
-import {LandingPageProjects} from "../data/ProjectData";
+
 import {useParams} from "react-router-dom";
 import EmailFormComponent from "../components/EmailFormComponent";
+import ProjectCards, {AnimateMode} from "../components/ProjectCards";
+import AnimateContainer from "../components/AnimateContainer";
 
 const LandingPage = ({landingSection}) =>{
     const [scope, animate] = useAnimate();
@@ -12,12 +14,12 @@ const LandingPage = ({landingSection}) =>{
 
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
-    const abstractText = "Software Engineer,|,Full Stack Development,|,Machine Learning";
+    const abstractText = "Software Engineering,|,Full Stack Development,|,Machine Learning";
 
     useEffect(() => {
         landingSection = section;
         const sectionElement = document.getElementById(section);
-        sectionElement.scrollIntoView({ block: "center", behavior: "smooth" });
+        sectionElement.scrollIntoView({ block: landingSection === "landing-title" ? "center" : "center", behavior: "smooth" });
 
 
         const sequence = [
@@ -35,7 +37,7 @@ const LandingPage = ({landingSection}) =>{
 
     useEffect(() => {
         const sectionElement = document.getElementById(landingSection);
-        sectionElement.scrollIntoView({ block: "center", behavior: "smooth"});
+        sectionElement.scrollIntoView({ block: landingSection === "landing-title" ? "center" : "center", behavior: "smooth"});
     }, [landingSection]);
 
     return (
@@ -68,42 +70,50 @@ const LandingPage = ({landingSection}) =>{
                 <section id="about-me">
                     <div className="div-inline-center">
                         <div id="about-me-container">
-                            <div className="header landing">
-                                About Me
-                            </div>
-                            <div className="blur-container landing">
-                                <p>I'm a recent graduate software engineer from the University of Calgary,
-                                    with a strong passion for web development. Crafting dynamic web pages using
-                                    frameworks like React and Angular is where I truly shine. But my skills don't
-                                    stop there; I love diving into the worlds of machine learning and DevOps, using
-                                    my knowledge to solve complex problems and streamline processes. What drives me?
-                                    It's the thrill of innovation and the satisfaction of finding solutions that make
-                                    a real impact. I'm constantly seeking new challenges and opportunities to learn
-                                    and grow in this ever-evolving field.</p>
-                            </div>
+                            <AnimateContainer>
+                                <div className="header landing">
+                                    About Me
+                                </div>
+                            </AnimateContainer>
+                            <AnimateContainer>
+                                <div className="blur-container landing">
+                                    <p>I'm a recent graduate software engineer from the University of Calgary,
+                                        with a strong passion for web development. Crafting dynamic web pages using
+                                        frameworks like React and Angular is where I truly shine. But my skills don't
+                                        stop there; I love diving into the worlds of machine learning and DevOps, using
+                                        my knowledge to solve complex problems and streamline processes. What drives me?
+                                        It's the thrill of innovation and the satisfaction of finding solutions that
+                                        make
+                                        a real impact. I'm constantly seeking new challenges and opportunities to learn
+                                        and grow in this ever-evolving field.</p>
+                                </div>
+                            </AnimateContainer>
                         </div>
                     </div>
                 </section>
                 <section id="landing-projects">
                     <div className="span-div">
-                        <div className="header landing">
-                            Recent Projects
-                        </div>
-                        <div className="projects">
-                            {LandingPageProjects.map((project, index) => (
-                                <ProjectCardComponent key={index} id={index} title={project.title} description={project.description} images={project.images}/>
-                            ))}
-                        </div>
+                        <AnimateContainer>
+                            <div className="header landing">
+                                Recent Projects
+                            </div>
+                        </AnimateContainer>
+                        <AnimateContainer>
+                            <ProjectCards excludeId={-1}></ProjectCards>
+                        </AnimateContainer>
                     </div>
                 </section>
                 <section id="lets-connect" className="main">
                     <div className="div-inline-center">
                         <div>
-                            <div className="header landing">Send me a message</div>
-                            <div className="blur-container">
-                                <EmailFormComponent/>
-                            </div>
-
+                            <AnimateContainer>
+                                <div className="header landing">Send me a message</div>
+                            </AnimateContainer>
+                            <AnimateContainer>
+                                <div className="blur-container">
+                                    <EmailFormComponent/>
+                                </div>
+                            </AnimateContainer>
                         </div>
                     </div>
                 </section>

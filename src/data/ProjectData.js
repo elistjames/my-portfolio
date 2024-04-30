@@ -19,6 +19,7 @@ export const SectionType = {
 
 export const LandingPageProjects = [
     {
+        id: 0,
         title: 'Pason Live Mobile',
         description: 'Modified a large scale desktop app to be have complex mobile capabilities. Placed 2nd in capstone design fair',
         images: [
@@ -33,6 +34,7 @@ export const LandingPageProjects = [
         ]
     },
     {
+        id: 1,
         title: 'Byte Books',
         description: 'A mobile app that helps people with short attentions spans to read more',
         images: [
@@ -50,6 +52,7 @@ export const LandingPageProjects = [
 
 export const ProjectData = [
     {
+        id: 0,
         title: 'Pason Live Mobile',
         images: [
             {
@@ -191,6 +194,7 @@ export const ProjectData = [
         ]
     },
     {
+        id: 1,
         title: 'Byte Books',
         images: [
             {

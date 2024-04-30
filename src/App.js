@@ -7,9 +7,11 @@ import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
 import React, {useEffect, useRef, useState} from "react";
 import ProjectPage from "./pages/ProjectPage";
-import {Image} from "react-bootstrap";
+import {Button, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useMotionValueEvent, useScroll, useTransform} from "framer-motion";
 import { motion } from "framer-motion";
+import { BsChevronUp } from "react-icons/bs";
+
 
 function useParallax(value, distance1, distance2) {
     return useTransform(value, [0, 1], [distance1, distance2]);
@@ -17,16 +19,27 @@ function useParallax(value, distance1, distance2) {
 
 function App() {
     const [landingSection, setLandingSection] = useState("landing-title");
+    const [atTop, setAtTop] = useState(true);
     const background = useRef();
 
     const {scrollYProgress} = useScroll();
     const y = useParallax(scrollYProgress, 0, -150);
     const scale = useParallax(scrollYProgress, 1, 2);
 
-    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    //     setBackgroundPosition(backgroundPosition+latest)
-    //     console.log("Page scroll: ", latest)
-    // })
+    React.useEffect(() => {
+        window.onscroll = () => {
+            setAtTop(window.scrollY === 0);
+        }
+
+
+        return () => (window.onscroll = null);
+    });
+
+    const renderToTop = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            Back To Top
+        </Tooltip>
+    );
 
     const isMobile = useMediaQuery({
         query: '(max-width: 700px)'
@@ -50,6 +63,11 @@ function App() {
           <motion.div ref={background} className="background-texture" style={{translateY: y}}>
 
           </motion.div>
+          <OverlayTrigger placement="left" delay={{show: 100, hide: 100}} overlay={renderToTop}>
+              <Button className={atTop ? "to-top-btn blur hidden" : "to-top-btn blur"} onClick={() => {window.scrollTo(0, 0)}}>
+                  <BsChevronUp size={40} className="post-mobile"/>
+              </Button>
+          </OverlayTrigger>
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
               <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
