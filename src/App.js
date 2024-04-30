@@ -5,12 +5,28 @@ import {BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Naviga
 import NavBarComponent from "./components/NavBarComponent";
 import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import ProjectPage from "./pages/ProjectPage";
 import {Image} from "react-bootstrap";
+import {useMotionValueEvent, useScroll, useTransform} from "framer-motion";
+import { motion } from "framer-motion";
+
+function useParallax(value, distance1, distance2) {
+    return useTransform(value, [0, 1], [distance1, distance2]);
+}
 
 function App() {
     const [landingSection, setLandingSection] = useState("landing-title");
+    const background = useRef();
+
+    const {scrollYProgress} = useScroll();
+    const y = useParallax(scrollYProgress, 0, -150);
+    const scale = useParallax(scrollYProgress, 1, 2);
+
+    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    //     setBackgroundPosition(backgroundPosition+latest)
+    //     console.log("Page scroll: ", latest)
+    // })
 
     const isMobile = useMediaQuery({
         query: '(max-width: 700px)'
@@ -31,9 +47,9 @@ function App() {
     const [toolBarActive, setToolBarActive] = useState(false);
     return (
       <div className="app-wrapper">
-          <div className="background-texture">
+          <motion.div ref={background} className="background-texture" style={{translateY: y}}>
 
-          </div>
+          </motion.div>
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
               <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>

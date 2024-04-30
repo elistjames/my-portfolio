@@ -2,7 +2,7 @@
   --purple: #5e00ff;
   --lighterBlue: #005791;
   --blue: #0096ff;
-  --darkGrayTrans: rgba(4, 7, 7, 0.37);
+  --darkGrayTrans: rgba(124, 124, 124, 0.1);
   --darkerBlue: #00030e;
   --darkerBlueTranslucent: rgba(0, 0, 0, 0);
   --beige: #F3E8D7;
@@ -60,6 +60,23 @@ code {
     monospace;
 }
 
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  backdrop-filter: blur(10px);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to bottom, var(--darkerBlue), var(--purple), var(--darkerBlue));
+  backdrop-filter: blur(10px);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fff3;
+}
+
 .app-wrapper {
   background-image: var(--darkerBlue);
   display: flex;
@@ -70,11 +87,13 @@ code {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   background-image: url(resources/dark-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/**/
 
 .page{
 
@@ -118,7 +137,25 @@ section .header.landing{
   text-align: center;
 }
 
+.image-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.basic-container{
+  background: var(--darkerBlue);
+  height: auto;
+  width: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 30px black;
+}
+
 .blur-container{
+  background: var(--darkGrayTrans);
   backdrop-filter: blur(10px);
   height: auto;
   width: auto;
@@ -203,10 +240,11 @@ section .header.landing{
   align-items: center;
 }
 
-.nav-btn-gradient{
+.btn-gradient{
   background-image: linear-gradient(to right, var(--purple), var(--lighterBlue));
   padding:2px;
   border-radius: 1.2rem;
+  width: fit-content;
 }
 
 .nav-btn{
