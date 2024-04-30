@@ -109,7 +109,7 @@ export const ProjectData = [
                     "and tablets, despite them having complete access and control of the site using external peripherals. " +
                     "This led to inconsistencies, feature delays, and difficulty testing and maintaining each of the applications.",
 
-                    "was able to illustrate that as a viable solution to these problems, a single code-base could perform " +
+                    "The final implementation was able to illustrate that as a viable solution to these problems, a single code-base could perform " +
                     "the same features with parallel performance to the individual native applications. We were able to " +
                     "create a fully-featured, mobile-first application, using the same React code base that exists for " +
                     "the desktop class application. Integrated into the new app include numerous multi-touch gestures, " +
@@ -131,17 +131,35 @@ export const ProjectData = [
                 ]
             },
             {
+                sectionType: SectionType.basic,
+                header: "The End Result",
+                body: "The result of this project was fantastic. Not only was the team able to achieve silver at the " +
+                    "2024 Capstone Design Fair, but Pason is actively pursuing our proven method of mobile application " +
+                    "development to simplify their full-stack development process.",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 3,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
                 sectionType: SectionType.paragraphImage,
                 header: "My Role",
                 body: "My job was implementing the touch scroll, zoom and inertia features. Pason was very invested in " +
                     "the scroll and zoom specifically, so it was a great responsibility on my part to deliver. The interesting " +
-                    "thing about these touch features id that they dont act as if you are transforming an image. Instead, they " +
+                    "thing about these touch features is that they dont act as if you are transforming an image. Instead, they " +
                     "manipulate the range of data you are viewing in the graph traces. For the scroll I simply calculated " +
-                    "how far a single finger touch move event traveled as a percentage of the graph component's pixel height, then " +
+                    "how far a single touch move event traveled as a percentage of the graph component's pixel height, then " +
                     "I increment or decrement the top and bottom bounds of the graph by the same percentage but in respect to " +
-                    "the range of drilling data displayed. To zoom was a bit more difficult as the 2 finger move events had to control " +
-                    "the top and bottom bounds and different ratios. these ratios depend on the percentage client Y location of each finger " +
-                    "with respect to the graph component height. Finally the inertia is triggered when a touch up event occurs. " +
+                    "the range of drilling data displayed. The zoom was a bit more difficult, as the 2 finger move events had to control " +
+                    "the top and bottom bounds at different ratios. These ratios depend on the percentage client Y location of each finger " +
+                    "with respect to the graph component height. This was necessary in making the zoom behaviour perfectly follow the position " +
+                    "of the finger, such that the data point you finger is touching, is always under that finger. Finally the inertia is triggered when a touch up event occurs. " +
                     "The touch up event handler records the velocity at which the finger was moving before it was released, then will " +
                     "call a async function that essentially loops a touch move event at that velocity, white tapering it off each iteration.",
                 paragraphs: [],

@@ -1,23 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import './LandingPage.css';
-import {motion, stagger, useAnimate} from "framer-motion"
+import {motion, stagger, useAnimate, useInView} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
 import {LandingPageProjects} from "../data/ProjectData";
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import EmailFormComponent from "../components/EmailFormComponent";
 
 const LandingPage = ({landingSection}) =>{
     const [scope, animate] = useAnimate();
     const {section} = useParams();
-    const currentRoute = useLocation();
+
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
-    const abstractText = "Software Engineer,|,Full Stack Development,|,Machine Learning"
+    const abstractText = "Software Engineer,|,Full Stack Development,|,Machine Learning";
 
     useEffect(() => {
-        let result = currentRoute.pathname.slice(1);
         landingSection = section;
         const sectionElement = document.getElementById(section);
-        sectionElement.scrollIntoView({ block: "center" });
+        sectionElement.scrollIntoView({ block: "center", behavior: "smooth" });
 
 
         const sequence = [
@@ -31,16 +31,18 @@ const LandingPage = ({landingSection}) =>{
 
     }, [section]);
 
+
+
     useEffect(() => {
         const sectionElement = document.getElementById(landingSection);
-        sectionElement.scrollIntoView({ block: "center" });
+        sectionElement.scrollIntoView({ block: "center", behavior: "smooth"});
     }, [landingSection]);
 
     return (
         <>
-            <div className="page">
+            <div ref={scope} className="page">
                 <section id="landing-title" className="main">
-                    <div ref={scope} className="div-inline-center">
+                    <div  className="div-inline-center">
                         <div className="intro-container">
                             <div className="code-intro-container">
                                 <div className="code-intro1 coding-font">
@@ -65,7 +67,7 @@ const LandingPage = ({landingSection}) =>{
                 </section>
                 <section id="about-me">
                     <div className="div-inline-center">
-                        <div>
+                        <div id="about-me-container">
                             <div className="header landing">
                                 About Me
                             </div>
@@ -91,6 +93,17 @@ const LandingPage = ({landingSection}) =>{
                             {LandingPageProjects.map((project, index) => (
                                 <ProjectCardComponent key={index} id={index} title={project.title} description={project.description} images={project.images}/>
                             ))}
+                        </div>
+                    </div>
+                </section>
+                <section id="lets-connect" className="main">
+                    <div className="div-inline-center">
+                        <div>
+                            <div className="header landing">Send me a message</div>
+                            <div className="blur-container">
+                                <EmailFormComponent/>
+                            </div>
+
                         </div>
                     </div>
                 </section>
