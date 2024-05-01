@@ -1,7 +1,5 @@
 import {LandingPageProjects} from "../data/ProjectData";
-import {motion, useScroll, useSpring, useTransform, useVelocity} from "framer-motion"
-import React, {useEffect, useRef} from "react";
-import { useMotionTemplate } from "framer-motion"
+import React from "react";
 import ProjectCardComponent from "./ProjectCardComponent";
 
 

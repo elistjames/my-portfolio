@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Card} from "react-bootstrap";
 import './PointGrid.css';
 import {motion} from "framer-motion";

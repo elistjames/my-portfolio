@@ -1,24 +1,17 @@
 import {ProjectData} from "../data/ProjectData";
 import {useParams} from "react-router-dom";
-import React, {useEffect} from "react";
+import React from "react";
 import Image from 'react-bootstrap/Image';
 import {SectionType} from "../data/ProjectData";
 import "./ProjectPage.css";
 import AnimateContainer from "../components/AnimateContainer";
-import ProjectCards from "../components/ProjectCards";
 import PointGridComponent from "../components/PointGridComponent";
 import SubSectionsComponent from "../components/SubSectionsComponent";
-import {useMediaQuery} from "react-responsive";
-
 
 
 const ProjectPage = () =>{
     const { id } = useParams();
     const project = ProjectData[id];
-
-    const isMobile = useMediaQuery({
-        query: '(max-width: 835px)'
-    });
 
     return (
         <div className="page">
@@ -92,6 +85,7 @@ const ProjectPage = () =>{
                                                 width="100%"
                                                 height="100%"
                                                 className="section-video"
+                                                title="project video"
                                                 src={project.videos[section.videoIndex].data}
                                             />
                                         </div>
@@ -99,9 +93,6 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
-                    case SectionType.imageParagraph:
-
-                        break;
                     case SectionType.paragraphImage:
                         return (
                             <AnimateContainer key={index}>

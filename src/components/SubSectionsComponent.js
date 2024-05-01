@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import SubSectionComponent from "./SubSectionComponent";
 import './SubSections.css';
 import AnimateContainer from "./AnimateContainer";

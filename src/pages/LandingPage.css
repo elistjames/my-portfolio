@@ -29,6 +29,7 @@
 
 .projects{
     display: inline-flex;
+    justify-content: center;
     align-items: center;
     height: 400px;
     width: 100%;
@@ -40,6 +41,12 @@
 .lets-connect-form{
     width: 100%;
     max-width: 600px;
+}
+
+@media (max-width: 974px){
+    .projects{
+        justify-content: start;
+    }
 }
 
 @media (min-width: 584px) and (max-width: 835px) {

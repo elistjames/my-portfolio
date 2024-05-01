@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import './PointGrid.css';
 import PointCardComponent from "./PointCardComponent";
 import {stagger, useAnimate, useInView} from "framer-motion";
-import AnimateContainer from "./AnimateContainer";
 
 
 const PointGridComponent = ({header, points}) => {
@@ -18,7 +17,7 @@ const PointGridComponent = ({header, points}) => {
             animate(".card-gradient", {scale: 1}, {delay: stagger(0.1)});
 
         }
-    }, [isInView])
+    }, [animate, isInView])
 
     return(
         <section>

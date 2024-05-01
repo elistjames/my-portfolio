@@ -1,14 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import { useMediaQuery } from 'react-responsive';
-import {BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Navigate} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import NavBarComponent from "./components/NavBarComponent";
 import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
 import React, {useEffect, useRef, useState} from "react";
 import ProjectPage from "./pages/ProjectPage";
-import {Button, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
-import {useMotionValueEvent, useScroll, useTransform} from "framer-motion";
+import {useScroll, useTransform} from "framer-motion";
 import { motion } from "framer-motion";
 import { BsChevronUp } from "react-icons/bs";
 
@@ -26,7 +23,6 @@ function App() {
 
     const {scrollYProgress} = useScroll();
     const y = useParallax(scrollYProgress, 0, -150);
-    const scale = useParallax(scrollYProgress, 1, 2);
 
     React.useEffect(() => {
         window.onscroll = () => {
@@ -41,14 +37,6 @@ function App() {
         setLandingSection(tempLandingSection);
         setTempLandingSection(tempLandingSection);
     }, [landingSection]);
-
-    const isMobile = useMediaQuery({
-        query: '(max-width: 640px)'
-    });
-
-    const isSmallMobile = useMediaQuery({
-        query: '(max-width: 450px)'
-    });
 
     const handleLandingNavigate = (section) =>{
         setToolBarActive(false);

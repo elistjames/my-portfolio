@@ -1,25 +1,18 @@
-import React, {useEffect} from 'react';
-import {Button, Container, Nav, OverlayTrigger, Tooltip} from "react-bootstrap";
-import Navbar from 'react-bootstrap/Navbar';
+import React from 'react';
+import {Button, OverlayTrigger, Tooltip} from "react-bootstrap";
 import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { BsList } from "react-icons/bs";
-import { BsFileEarmarkPerson } from "react-icons/bs";
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
 
 
 const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
-    const navigate = useNavigate();
     const currentRoute = useLocation();
 
 
     const isMobile = useMediaQuery({
         query: '(max-width: 640px)'
-    });
-
-    const isSmallMobile = useMediaQuery({
-        query: '(max-width: 450px)'
     });
 
     const handleNavigate = async (section) => {
@@ -43,17 +36,17 @@ const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
         </Tooltip>
     );
 
-    const renderResume = (props) => (
-        <Tooltip id="button-tooltip" {...props}>
-            Resume
-        </Tooltip>
-    );
+    // const renderResume = (props) => (
+    //     <Tooltip id="button-tooltip" {...props}>
+    //         Resume
+    //     </Tooltip>
+    // );
 
     const handleToggleToolBar = () => {
         toggleToolBar();
     }
     return(
-        <div id="top-nav" data-bs-theme="dark" fixed="top">
+        <div id="top-nav" data-bs-theme="dark">
             <div className="nav-container">
                 <div className="div-inline-center">
                     {isMobile &&
@@ -83,13 +76,13 @@ const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
                 </div>
                 <div className="div-inline-center">
                     {!isMobile &&
-                        <Link className="nav-link" onClick={() => handleNavigate("landing-title")}>Home</Link>
+                        <button className="nav-link" onClick={() => handleNavigate("landing-title")}>Home</button>
                     }
                     {!isMobile &&
-                        <Link className="nav-link" onClick={() => handleNavigate("about-me")}>About Me</Link>
+                        <button className="nav-link" onClick={() => handleNavigate("about-me")}>About Me</button>
                     }
                     {!isMobile &&
-                        <Link className="nav-link" onClick={() => handleNavigate("landing-projects")}>Projects</Link>
+                        <button className="nav-link" onClick={() => handleNavigate("landing-projects")}>Projects</button>
                     }
                     {isMobile &&
                         <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderLinkedIn}>

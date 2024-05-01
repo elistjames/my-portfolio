@@ -1,4 +1,4 @@
-
+@import "../index.css";
 
 .project-card{
     background: var(--darkerBlue);
@@ -97,6 +97,3 @@
 #card-btn:active {
     background: var(--blue);
 }
-
-
-@import "../index.css";

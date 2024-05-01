@@ -1,11 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect} from 'react';
 import './LandingPage.css';
-import {motion, stagger, useAnimate, useInView} from "framer-motion"
-import ProjectCardComponent from "../components/ProjectCardComponent";
+import {motion, stagger, useAnimate} from "framer-motion"
 
 import {useParams} from "react-router-dom";
 import EmailFormComponent from "../components/EmailFormComponent";
-import ProjectCards, {AnimateMode} from "../components/ProjectCards";
+import ProjectCards from "../components/ProjectCards";
 import AnimateContainer from "../components/AnimateContainer";
 
 const LandingPage = ({landingSection}) =>{

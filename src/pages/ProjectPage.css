@@ -1,5 +1,4 @@
-
-
+@import "../index.css";
 
 .section-image{
     width: 50%;
@@ -89,8 +88,3 @@
         margin-top: 1rem;
     }
 }
-
-
-
-
-@import "../index.css";

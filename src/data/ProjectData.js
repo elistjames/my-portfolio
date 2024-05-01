@@ -24,7 +24,6 @@ export const SectionType = {
     multiParagraph: "multiParagraph",
     image: "image",
     video: "video",
-    imageParagraph: "imageParagraph",
     paragraphImage: "paragraphImage",
     subsections: "subsections",
     pointGrid: "pointGrid",

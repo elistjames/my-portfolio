@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import Image from 'react-bootstrap/Image';
 import './SubSections.css';
-import {motion, stagger, useAnimate, useInView} from "framer-motion";
+import {motion, useAnimate, useInView} from "framer-motion";
 import {useMediaQuery} from "react-responsive";
 
 const SubSectionComponent = ({subsection}) => {
@@ -20,9 +19,9 @@ const SubSectionComponent = ({subsection}) => {
         if(isInView){
             animate(scope.current, {width: "100%"}, {duration: 0.3});
             setShowDetails(true);
-            animate(".subsection-details", {opacity: 1}, {delay: 0.3})
+            //animate(".subsection-details", {opacity: 1}, {delay: 0.3});
         }
-    }, [isInView])
+    }, [animate, isInView, scope])
 
     return(
         <div className="subsection-wrapper">
@@ -31,10 +30,9 @@ const SubSectionComponent = ({subsection}) => {
                     <motion.div className="subsection-container" initial={{width: "auto"}}>
                         <div className="subsection-image-container">
                             <img className="subsection-image" src={subsection.image.data}
-                                 style={{objectFit: subsection.image.fit}}/>
+                                 style={{objectFit: subsection.image.fit}} alt="subsection image"/>
                         </div>
-                        <motion.div className={showDetails ? "subsection-details" : "subsection-details outside"}
-                                    initial={{opacity: 0}}>
+                        <motion.div className={showDetails ? "subsection-details" : "subsection-details outside"}>
                             <div className="subsection-details-header">
                                 {subsection.header}
                             </div>
@@ -49,15 +47,13 @@ const SubSectionComponent = ({subsection}) => {
                         <div className="mobile-subsection-header">
                             <div className="subsection-image-container">
                                 <img className="subsection-image" src={subsection.image.data}
-                                     style={{objectFit: subsection.image.fit}}/>
+                                     style={{objectFit: subsection.image.fit}} alt="subsection image"/>
                             </div>
                             <div className="subsection-details-header mobile">
                                 {subsection.header}
                             </div>
                         </div>
-                        <motion.div className={showDetails ? "subsection-details mobile" : "subsection-details outside"}
-                                    initial={{opacity: 0}}>
-
+                        <motion.div className={showDetails ? "subsection-details mobile" : "subsection-details outside"}>
                             <div className="subsection-body">
                                 {subsection.body}
                             </div>

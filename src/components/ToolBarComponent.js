@@ -1,6 +1,4 @@
-import { BsPersonFill } from "react-icons/bs";
-import {Link, useLocation} from "react-router-dom";
-import { FaAward } from "react-icons/fa";
+import {useLocation} from "react-router-dom";
 import {NavData} from "../data/NavData";
 import {useMediaQuery} from "react-responsive";
 
@@ -29,7 +27,7 @@ const ToolBarComponent = ({expanded, handleLandingNavigate}) =>{
                     {NavData.map((nav, index) => (
                         <li key={index}>
                             {nav.icon}
-                            <Link className="nav-text nav-header" onClick={() => handleNavigate(nav.link)}>{nav.label}</Link>
+                            <button className="nav-text nav-header" onClick={() => handleNavigate(nav.link)}>{nav.label}</button>
                         </li>
                     ))}
                 </ul>
