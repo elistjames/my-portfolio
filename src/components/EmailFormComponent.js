@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import emailjs from '@emailjs/browser';
 import './EmailForm.css';
+import {useMediaQuery} from "react-responsive";
 
 const EmailFormComponent = () =>{
 
@@ -9,6 +10,11 @@ const EmailFormComponent = () =>{
     const [message, setMessage] = useState("");
     const [showEmailError, setShowEmailError] = useState(false);
     const [showNameError, setShowNameError] = useState(false);
+
+
+    const shortScreen = useMediaQuery({
+        query: '(max-height: 780px)'
+    });
 
     const validateEmail = (email) => {
         return String(email)
@@ -85,8 +91,7 @@ const EmailFormComponent = () =>{
             {showEmailError && <span className="error-message">Must be a valid email address</span>}
             <textarea
                 className="form-field textarea"
-                cols="30"
-                rows="10"
+                rows={shortScreen ? 6 : 10}
                 placeholder="Message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}

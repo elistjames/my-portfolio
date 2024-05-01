@@ -1,0 +1,34 @@
+
+
+.point-card{
+    background: var(--darkerBlue);
+    width: 200px;
+    height: 200px;
+    border-radius: 1.1rem;
+    color: var(--white);
+    transition: 0.3s;
+}
+
+.point-card p{
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    margin: 0;
+    transition: 0.3s;
+}
+
+
+.points-flex-container{
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+
+    padding:0;
+    transition: all 0.3s ease;
+}
+
+@import '../index.css';

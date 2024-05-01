@@ -1,17 +1,4 @@
-
-
-
-
-.title-wrapper{
-    position: relative;
-    width: 100%;
-    height: 200px;
-}
-
-/*.title-container{*/
-/*    left: 0%;*/
-/*    top: 0%;*/
-/*}*/
+@import '../index.css';
 
 .title{
     font-family: "Montserrat", "Poppins", "Open Sans", sans-serif;
@@ -36,24 +23,55 @@
     opacity: 0;
 }
 
-/*.code-intro-container{*/
-/*    width: 1000px;*/
-/*}*/
-
 .code-intro1 span, .code-intro2 span{
     opacity: 0;
 }
 
-
-
 .projects{
     display: inline-flex;
-    justify-content: center;
     align-items: center;
     height: 400px;
     width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
     /*border: 1px solid white;*/
 }
 
+.lets-connect-form{
+    width: 100%;
+    max-width: 600px;
+}
 
-@import '../index.css';
+@media (min-width: 584px) and (max-width: 835px) {
+    .title{
+        font-size: 5rem;
+    }
+
+    .abstract{
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 301px) and (max-width: 583px){
+    .title{
+        font-size: 4rem;
+    }
+
+    .abstract{
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .title{
+        font-size: 1rem;
+    }
+
+    .abstract{
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        width: 100%;
+    }
+}

@@ -7,29 +7,43 @@ import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
 import React, {useEffect, useRef, useState} from "react";
 import ProjectPage from "./pages/ProjectPage";
-import {Image} from "react-bootstrap";
+import {Button, Image, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {useMotionValueEvent, useScroll, useTransform} from "framer-motion";
 import { motion } from "framer-motion";
+import { BsChevronUp } from "react-icons/bs";
+
 
 function useParallax(value, distance1, distance2) {
     return useTransform(value, [0, 1], [distance1, distance2]);
 }
 
 function App() {
+    const [toolBarActive, setToolBarActive] = useState(false);
     const [landingSection, setLandingSection] = useState("landing-title");
+    const [tempLandingSection, setTempLandingSection] = useState("landing-title");
+    const [atTop, setAtTop] = useState(true);
     const background = useRef();
 
     const {scrollYProgress} = useScroll();
     const y = useParallax(scrollYProgress, 0, -150);
     const scale = useParallax(scrollYProgress, 1, 2);
 
-    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    //     setBackgroundPosition(backgroundPosition+latest)
-    //     console.log("Page scroll: ", latest)
-    // })
+    React.useEffect(() => {
+        window.onscroll = () => {
+            setAtTop(window.scrollY <= 10);
+        }
+
+
+        return () => (window.onscroll = null);
+    });
+
+    useEffect(() => {
+        setLandingSection(tempLandingSection);
+        setTempLandingSection(tempLandingSection);
+    }, [landingSection]);
 
     const isMobile = useMediaQuery({
-        query: '(max-width: 700px)'
+        query: '(max-width: 640px)'
     });
 
     const isSmallMobile = useMediaQuery({
@@ -37,25 +51,29 @@ function App() {
     });
 
     const handleLandingNavigate = (section) =>{
-        setLandingSection(section);
+        setToolBarActive(false);
+        setTempLandingSection(section);
+        setLandingSection("sup");
     }
 
     const handleToolBarToggle = () =>{
       setToolBarActive(!toolBarActive);
     }
 
-    const [toolBarActive, setToolBarActive] = useState(false);
     return (
       <div className="app-wrapper">
           <motion.div ref={background} className="background-texture" style={{translateY: y}}>
 
           </motion.div>
+          <button id="to-top" className={atTop ? "to-top-btn blur hidden" : "to-top-btn blur"} onClick={() => {window.scrollTo(0, 0)}}>
+              <BsChevronUp size={40} className="post-mobile"/>
+          </button>
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
-              <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
-              <div className={(toolBarActive && !isMobile) ? "viewport compressed" : "viewport"}>
+              <ToolBarComponent expanded={toolBarActive} handleLandingNavigate={handleLandingNavigate}></ToolBarComponent>
+              <div className="viewport">
                   <Routes>
-                      <Route path='/:section' element={<LandingPage landingSection={landingSection}/>}/>
+                      <Route path='/:section' element={<LandingPage landingSection={landingSection} handleLandingNavigate={handleLandingNavigate}/>}/>
                       <Route path="/project/:id" element={<ProjectPage/>}/>
                       <Route path="/" element={<Navigate to="/landing-title"/>}/>
                   </Routes>

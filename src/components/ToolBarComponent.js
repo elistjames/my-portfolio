@@ -1,32 +1,37 @@
 import { BsPersonFill } from "react-icons/bs";
-import {Link} from "react-router-dom";
-import { FaLaptopCode } from "react-icons/fa";
+import {Link, useLocation} from "react-router-dom";
 import { FaAward } from "react-icons/fa";
+import {NavData} from "../data/NavData";
+import {useMediaQuery} from "react-responsive";
 
-const ToolBarComponent = ({expanded}) =>{
+const ToolBarComponent = ({expanded, handleLandingNavigate}) =>{
+
+    const currentRoute = useLocation();
+
+    const isMobile = useMediaQuery({
+        query: '(max-width: 640px)'
+    });
+
+    const handleNavigate = async (section) => {
+
+        if (currentRoute.pathname !== "/" && currentRoute.pathname !== "/landing-title" && currentRoute.pathname !== "/about-me" && currentRoute.pathname !== "/landing-projects") {
+            window.location.assign(`/${section}`);
+        }
+        else{
+            handleLandingNavigate(section);
+        }
+    }
 
     return(
-        <div className={expanded ? "toolbar active" : "toolbar"}>
+        <div className={(expanded && isMobile) ? "toolbar active" : "toolbar"}>
             <div className="tool-bar-container">
                 <ul className="tool-bar-list">
-                    <li>
-                        <BsPersonFill size={20}/>
-                        <Link className="nav-text nav-header" to="/">About Me</Link>
-                    </li>
-                    <li>
-                        <FaLaptopCode size={20}/>
-                        <Link className="nav-text nav-header" to="/projects">Projects</Link>
-                    </li>
-                    <li>
-                        <ul className="tool-bar-list">
-                            <li><Link className="nav-text">ByteBooks</Link></li>
-                            <li><Link className="nav-text" >Pason Live</Link></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <FaAward size={20}/>
-                        <Link className="nav-text nav-header" to="/accomplishments">Accomplishments</Link>
-                    </li>
+                    {NavData.map((nav, index) => (
+                        <li key={index}>
+                            {nav.icon}
+                            <Link className="nav-text nav-header" onClick={() => handleNavigate(nav.link)}>{nav.label}</Link>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>

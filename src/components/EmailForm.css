@@ -4,6 +4,8 @@
 .emailForm{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 800px;
 }
 
 .form-field{
@@ -14,6 +16,7 @@
     margin: 2rem 0rem 0 0rem;
     padding: 0.8rem;
     border-radius: 1rem;
+    min-width: 200px;
 }
 
 .form-field:focus{
@@ -26,6 +29,7 @@
 }
 
 .form-field.textarea{
+    min-width: 100px;
     margin-bottom: 2rem;
 }
 

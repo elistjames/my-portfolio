@@ -13,7 +13,8 @@
 }
 
 .section-image.fill{
-    width: 80%;
+    width: 60%;
+    border-radius: 1.1rem;
 }
 
 .phone-gif{
@@ -44,6 +45,52 @@
 .paragraph-image-text{
     width: 100%;
 }
+
+@media (max-width:1025px) {
+
+
+    .side-to-side-div.main{
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 584px) and (max-width: 835px) {
+    .side-to-side-div{
+        flex-direction: column;
+    }
+
+    .image-container{
+        height: auto;
+        align-items: end;
+        margin-top: 1rem;
+    }
+}
+
+@media (min-width: 301px) and (max-width: 583px){
+    .side-to-side-div{
+        flex-direction: column;
+    }
+
+    .image-container{
+        height: auto;
+        align-items: end;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .side-to-side-div{
+        flex-direction: column;
+    }
+
+    .image-container{
+        height: auto;
+        align-items: end;
+        margin-top: 1rem;
+    }
+}
+
+
 
 
 @import "../index.css";
