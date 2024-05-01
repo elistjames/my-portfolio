@@ -8,12 +8,17 @@ import AnimateContainer from "../components/AnimateContainer";
 import ProjectCards from "../components/ProjectCards";
 import PointGridComponent from "../components/PointGridComponent";
 import SubSectionsComponent from "../components/SubSectionsComponent";
+import {useMediaQuery} from "react-responsive";
 
 
 
 const ProjectPage = () =>{
     const { id } = useParams();
     const project = ProjectData[id];
+
+    const isMobile = useMediaQuery({
+        query: '(max-width: 835px)'
+    });
 
     return (
         <div className="page">
@@ -76,13 +81,15 @@ const ProjectPage = () =>{
                                         <div className="header">{section.header}</div>
                                         <div className="side-to-side-div">
                                             <div className="paragraph-image-text blur-container">{section.body}</div>
-                                            <div className="image-container">
-                                                <AnimateContainer slideIn={true} amount={10}>
+
+                                            <AnimateContainer slideIn={true} amount={0}>
+                                                <div className="image-container">
                                                     <Image className="section-image phone-gif"
-                                                           src={project.images[section.imageIndex].data} alt="project image"
+                                                           src={project.images[section.imageIndex].data}
+                                                           alt="project image"
                                                            style={{objectFit: project.images[section.imageIndex].objectFit}}/>
-                                                </AnimateContainer>
-                                            </div>
+                                                </div>
+                                            </AnimateContainer>
                                         </div>
                                     </div>
                                 </section>
@@ -94,20 +101,24 @@ const ProjectPage = () =>{
                         );
                     case SectionType.pointGrid:
                         return (
-                            <PointGridComponent key={index} header={section.header} points={section.subsections}/>
+                            <AnimateContainer key={index} >
+                                <PointGridComponent header={section.header} points={section.subsections}/>
+                            </AnimateContainer>
                         );
                     default:
                         return (
-                            <section key={index}>
-                                <div className="span-div">
-                                    <div className="header">
-                                        {section.header}
+                            <AnimateContainer key={index}>
+                                <section >
+                                    <div className="span-div">
+                                        <div className="header">
+                                            {section.header}
+                                        </div>
+                                        <div className="blur-container">
+                                            <p>{section.body}</p>
+                                        </div>
                                     </div>
-                                    <div className="blur-container">
-                                        <p>{section.body}</p>
-                                    </div>
-                                </div>
-                            </section>
+                                </section>
+                            </AnimateContainer>
                         );
                 }
             })}

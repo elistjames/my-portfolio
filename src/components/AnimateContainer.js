@@ -9,7 +9,7 @@ const AnimateContainer = ({children, slideIn, amount = 0}) => {
 
     const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start end", "end end"]
+        offset: ["start end", "start center"]
     });
 
     const x = useTransform(scrollYProgress, [0,1], [100,amount]);

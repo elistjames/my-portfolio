@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import './PointGrid.css';
 import PointCardComponent from "./PointCardComponent";
 import {stagger, useAnimate, useInView} from "framer-motion";
+import AnimateContainer from "./AnimateContainer";
 
 
 const PointGridComponent = ({header, points}) => {
@@ -28,7 +29,7 @@ const PointGridComponent = ({header, points}) => {
                 <div className="points-flex-container">
                 {points.map((point, index) => (
                         <PointCardComponent key={index} header={point.header} body={point.body}/>
-                    ))}
+                ))}
                 </div>
             </div>
         </section>

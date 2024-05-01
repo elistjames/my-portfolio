@@ -36,7 +36,7 @@ function App() {
     });
 
     const isMobile = useMediaQuery({
-        query: '(max-width: 700px)'
+        query: '(max-width: 640px)'
     });
 
     const isSmallMobile = useMediaQuery({
@@ -63,7 +63,7 @@ function App() {
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
               <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
-              <div className={(toolBarActive && !isMobile) ? "viewport compressed" : "viewport"}>
+              <div className="viewport">
                   <Routes>
                       <Route path='/:section' element={<LandingPage landingSection={landingSection}/>}/>
                       <Route path="/project/:id" element={<ProjectPage/>}/>

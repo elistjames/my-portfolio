@@ -43,8 +43,8 @@ const LandingPage = ({landingSection}) =>{
     return (
         <>
             <div ref={scope} className="page">
-                <section id="landing-title" className="main">
-                    <div  className="div-inline-center">
+                <section id="landing-title" className="main span-div">
+                    <div  className="div-inline-center span-div">
                         <div className="intro-container">
                             <div className="code-intro-container">
                                 <div className="code-intro1 coding-font">
@@ -54,13 +54,13 @@ const LandingPage = ({landingSection}) =>{
                                     {codeIntro2.split("").map((char, index) => (<span key={index}>{char}</span>))}
                                 </div>
                             </div>
-                            <div className="title-container">
+                            <div className="title-container span-div">
                                 <motion.div className="title" initial={{x:"50px"}}>
                                     Eli St. James
                                 </motion.div>
                                 <div className="abstract">
                                     {abstractText.split(",").map((text, index) => (
-                                        <motion.span key={index} initial={{x:"50px"}}>{text}</motion.span>
+                                        <motion.span style={{width:"auto"}} key={index} initial={{x:"50px"}}>{text}</motion.span>
                                     ))}
                                 </div>
                             </div>
