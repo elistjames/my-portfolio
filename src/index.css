@@ -68,13 +68,23 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: linear-gradient(to bottom, var(--darkerBlue), var(--purple), var(--darkerBlue));
+  background: var(--white);
   backdrop-filter: blur(10px);
   -webkit-border-radius: 1ex;
 }
 
 ::-webkit-scrollbar-corner {
   background: #fff3;
+}
+
+.card-gradient {
+  background-image: linear-gradient(to bottom right, var(--purple), var(--blue));
+  padding: 4px;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 20px black;
+  margin: 1rem 1rem 1rem 1rem;
+  height: fit-content;
+  width: fit-content;
 }
 
 .app-wrapper {
@@ -342,6 +352,7 @@ section .header.landing{
 
 .to-top-btn{
   background: none;
+  color: var(--white);
   position: fixed;
   z-index: 100;
   bottom:2rem;
@@ -362,10 +373,16 @@ section .header.landing{
   outline: none;
 }
 
-.to-top-btn:hover{
-  border: 2px solid white;
-  background: var(--darkerBlue);
-  box-shadow: inset 30px 0 40px 0 var(--purple), inset 60px 0 30px 0 var(--blue);
+.to-top-btn:active{
+  color: var(--darkerBlue);
+  border: 2px solid var(--darkerBlue);
+}
+
+@media (hover: hover) {
+  .to-top-btn:hover{
+    background: var(--darkerBlue);
+    box-shadow: inset 30px 0 40px 0 var(--purple), inset 60px 0 30px 0 var(--blue);
+  }
 }
 
 .to-top-btn.hidden {
@@ -375,6 +392,26 @@ section .header.landing{
 
 
 @media (max-width: 700px) {
+
+  section .page-title{
+    width: 100%;
+    font-size: 3rem;
+  }
+
+  section .header{
+    padding: 0 2rem 1rem 2rem;
+    font-size: 2rem;
+  }
+
+  section .header.landing{
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .page{
+    padding: 0 5% 0 5%;
+  }
+
   .toolbar{
     width: 100%;
     left: 0;

@@ -48,11 +48,46 @@
 
 .projects{
     display: inline-flex;
-    justify-content: center;
     align-items: center;
     height: 400px;
     width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
     /*border: 1px solid white;*/
+}
+
+@media (max-width: 300px) {
+    .title{
+        font-size: 1rem;
+    }
+
+    .abstract{
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        width: 100%;
+    }
+}
+
+@media (min-width: 301px) and (max-width: 700px) {
+    .title{
+        font-size: 2rem;
+    }
+
+    .projects{
+        height: auto;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .abstract{
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        width: 100%;
+    }
 }
 
 

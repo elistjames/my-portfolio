@@ -6,6 +6,8 @@ import {SectionType} from "../data/ProjectData";
 import "./ProjectPage.css";
 import AnimateContainer from "../components/AnimateContainer";
 import ProjectCards from "../components/ProjectCards";
+import PointGridComponent from "../components/PointGridComponent";
+import SubSectionsComponent from "../components/SubSectionsComponent";
 
 
 
@@ -33,7 +35,6 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
-                        break;
                     case SectionType.multiParagraph:
                         return (
                             <AnimateContainer key={index}>
@@ -52,7 +53,6 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
-                        break;
                     case SectionType.image:
                         return (
                             <AnimateContainer key={index}>
@@ -65,7 +65,6 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
-                        break;
                     case SectionType.imageParagraph:
 
                         break;
@@ -89,13 +88,14 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
-                        break;
-                    case SectionType.roles:
-
-                        break;
                     case SectionType.subsections:
-
-                        break;
+                        return(
+                            <SubSectionsComponent key={index} header={section.header} subsections={section.subsections} images={project.images}/>
+                        );
+                    case SectionType.pointGrid:
+                        return (
+                            <PointGridComponent key={index} header={section.header} points={section.subsections}/>
+                        );
                     default:
                         return (
                             <section key={index}>

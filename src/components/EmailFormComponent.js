@@ -85,7 +85,6 @@ const EmailFormComponent = () =>{
             {showEmailError && <span className="error-message">Must be a valid email address</span>}
             <textarea
                 className="form-field textarea"
-                cols="30"
                 rows="10"
                 placeholder="Message"
                 value={message}

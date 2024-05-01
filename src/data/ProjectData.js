@@ -4,6 +4,10 @@ import byteBooks from '../resources/bytebookslogo.png';
 import byteBooksPhone from '../resources/bytebooksphone.png';
 import panZoomPhone from '../resources/pan-zoom-phone.gif';
 import panZoomPc from '../resources/pan-zoom-pc.gif';
+import mysql from '../resources/mysql.png';
+import express from '../resources/expressjs.png';
+import reactLogo from '../resources/reactlogo.png';
+import docker from '../resources/docker.png';
 
 
 export const SectionType = {
@@ -13,8 +17,8 @@ export const SectionType = {
     image: "image",
     imageParagraph: "imageParagraph",
     paragraphImage: "paragraphImage",
-    roles: "roles",
-    subsections: "subsections"
+    subsections: "subsections",
+    pointGrid: "pointGrid",
 }
 
 export const LandingPageProjects = [
@@ -35,6 +39,66 @@ export const LandingPageProjects = [
     },
     {
         id: 1,
+        title: 'Byte Books',
+        description: 'A mobile app that helps people with short attentions spans to read more',
+        images: [
+            {
+                data: byteBooksPhone,
+                fit: "contain"
+            },
+            {
+                data: byteBooks,
+                fit: "contain"
+            },
+        ]
+    },
+    {
+        id: 2,
+        title: 'Byte Books',
+        description: 'A mobile app that helps people with short attentions spans to read more',
+        images: [
+            {
+                data: byteBooksPhone,
+                fit: "contain"
+            },
+            {
+                data: byteBooks,
+                fit: "contain"
+            },
+        ]
+    },
+    {
+        id: 2,
+        title: 'Byte Books',
+        description: 'A mobile app that helps people with short attentions spans to read more',
+        images: [
+            {
+                data: byteBooksPhone,
+                fit: "contain"
+            },
+            {
+                data: byteBooks,
+                fit: "contain"
+            },
+        ]
+    },
+    {
+        id: 2,
+        title: 'Byte Books',
+        description: 'A mobile app that helps people with short attentions spans to read more',
+        images: [
+            {
+                data: byteBooksPhone,
+                fit: "contain"
+            },
+            {
+                data: byteBooks,
+                fit: "contain"
+            },
+        ]
+    },
+    {
+        id: 2,
         title: 'Byte Books',
         description: 'A mobile app that helps people with short attentions spans to read more',
         images: [
@@ -205,6 +269,22 @@ export const ProjectData = [
                 data: byteBooks,
                 fit: "contain"
             },
+            {
+                data: reactLogo,
+                fit: "contain"
+            },
+            {
+                data: express,
+                fit: "contain"
+            },
+            {
+                data: mysql,
+                fit: "contain"
+            },
+            {
+                data: docker,
+                fit: "contain"
+            },
         ],
         videos: [
             {
@@ -212,6 +292,116 @@ export const ProjectData = [
             }
         ],
         sections: [
+            {
+                sectionType: SectionType.main,
+                header: "Byte Books",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.pointGrid,
+                header: "The Motivation",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "1. Declining Reading Rates",
+                        body: "Fewer people, especially young adults, are reading books regularly",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "2. Competing Distractions",
+                        body: "Digital media and technology competing for our attention",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "3. Lack of Accessibility",
+                        body: "Books can be expensive and hard to find in some communities",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "4. Short and Simple",
+                        body: "Have a diverse collection of short and engaging reads for those who prefer shorter books",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "5. On the Go",
+                        body: "Have access to a library of books anytime, anywhere, right at your fingertips",
+                        imageIndex: 0
+                    },
+                ]
+            },
+            {
+                sectionType: SectionType.basic,
+                header: "The Answer",
+                body: "Byte Books is a web-based application designed to empower users to post, share, and discover " +
+                    "short stories and written snippets, tailored for quick consumption. By providing a dedicated space " +
+                    "for short-form written content, our solution not only addresses the need for a literary equivalent " +
+                    "to popular visual platforms but also elevates the voices of writers focusing on short stories, an " +
+                    "often underrepresented group in the literary community. This approach not only caters to the modern " +
+                    "user's attention span but also fosters a community for those who express creativity through words, " +
+                    "not just visuals.",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.subsections,
+                header: "Implementation",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "ReactJS Front End",
+                        body: "When it comes to web development, React is my favourite and definitely where I am my strongest." +
+                            " Aside from that, react was a great choice for its ability to handle dynamic user interfaces with" +
+                            "its amazing React life cycle protocols.",
+                        imageIndex: 2
+                    },
+                    {
+                        header: "ExpressJS API",
+                        body: "ExpressJS was new to me on this project, as I had only ever used Python Flask, but I decided to give it a" +
+                            "go considering it's good common knowledge to have. After implementing the API I was very pleased with expressJS." +
+                            "There was endless documentation for learning and the use of the node mysql package allowed me to connect to the database" +
+                            "without any problems.",
+                        imageIndex: 3
+                    },
+                    {
+                        header: "MySQL Database",
+                        body: "I have worked with MySQL since 2019, I really like the structure it provides for my backend." +
+                            " I will be honest, I wish had went with a NoSQL database like MongoDB, only because it would be consistent" +
+                            " with the JSON data structures used in the upper layers, and I wouldn't have to worry about any dreaded SQL queries.",
+                        imageIndex: 4
+                    },
+                    {
+                        header: "Docker Deployment",
+                        body: "Docker was another new service to me, I used it for the fist time in Fall 2023 when I was starting my Capstone project." +
+                            "I think it's a very handy tool for easy deployment and containerization. I ended up having three docker containers," +
+                            "for the React app, Express API and MySQL database respectively. This allowed me to run all three layers inside docker.",
+                        imageIndex: 5
+                    },
+                ]
+            },
             {
                 sectionType: SectionType.main,
                 header: "Byte Books",

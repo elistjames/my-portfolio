@@ -35,12 +35,6 @@ function App() {
         return () => (window.onscroll = null);
     });
 
-    const renderToTop = (props) => (
-        <Tooltip id="button-tooltip" {...props}>
-            Back To Top
-        </Tooltip>
-    );
-
     const isMobile = useMediaQuery({
         query: '(max-width: 700px)'
     });
@@ -63,11 +57,9 @@ function App() {
           <motion.div ref={background} className="background-texture" style={{translateY: y}}>
 
           </motion.div>
-          <OverlayTrigger placement="left" delay={{show: 100, hide: 100}} overlay={renderToTop}>
-              <Button className={atTop ? "to-top-btn blur hidden" : "to-top-btn blur"} onClick={() => {window.scrollTo(0, 0)}}>
-                  <BsChevronUp size={40} className="post-mobile"/>
-              </Button>
-          </OverlayTrigger>
+          <button id="to-top" className={atTop ? "to-top-btn blur hidden" : "to-top-btn blur"} onClick={() => {window.scrollTo(0, 0)}}>
+              <BsChevronUp size={40} className="post-mobile"/>
+          </button>
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
               <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>

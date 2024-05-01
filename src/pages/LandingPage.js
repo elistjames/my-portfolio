@@ -98,12 +98,10 @@ const LandingPage = ({landingSection}) =>{
                                 Recent Projects
                             </div>
                         </AnimateContainer>
-                        <AnimateContainer>
-                            <ProjectCards excludeId={-1}></ProjectCards>
-                        </AnimateContainer>
+                        <ProjectCards excludeId={-1}></ProjectCards>
                     </div>
                 </section>
-                <section id="lets-connect" className="main">
+                <section id="lets-connect">
                     <div className="div-inline-center">
                         <div>
                             <AnimateContainer>
