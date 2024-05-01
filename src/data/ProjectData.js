@@ -8,6 +8,13 @@ import mysql from '../resources/mysql.png';
 import express from '../resources/expressjs.png';
 import reactLogo from '../resources/reactlogo.png';
 import docker from '../resources/docker.png';
+import MLCartoon from '../resources/ml_cartoon.png';
+import NeuralNetwork from '../resources/neural_network.png';
+import loanIcon from '../resources/loan_icon.png';
+import dataset from '../resources/dataset.png';
+import preprocessing from '../resources/preprocessing.png';
+import results from '../resources/results.png';
+import confusion from '../resources/confusion-matrix.png';
 
 
 export const SectionType = {
@@ -54,64 +61,23 @@ export const LandingPageProjects = [
     },
     {
         id: 2,
-        title: 'Byte Books',
-        description: 'A mobile app that helps people with short attentions spans to read more',
+        title: 'Bank Loan Predictor',
+        description: 'A machine learning model that can give a prediction weather to approve a bank loan request or not',
         images: [
             {
-                data: byteBooksPhone,
+                data: MLCartoon,
                 fit: "contain"
             },
             {
-                data: byteBooks,
+                data: NeuralNetwork,
                 fit: "contain"
             },
+            {
+                data: loanIcon,
+                fit: "contain"
+            }
         ]
     },
-    {
-        id: 2,
-        title: 'Byte Books',
-        description: 'A mobile app that helps people with short attentions spans to read more',
-        images: [
-            {
-                data: byteBooksPhone,
-                fit: "contain"
-            },
-            {
-                data: byteBooks,
-                fit: "contain"
-            },
-        ]
-    },
-    {
-        id: 2,
-        title: 'Byte Books',
-        description: 'A mobile app that helps people with short attentions spans to read more',
-        images: [
-            {
-                data: byteBooksPhone,
-                fit: "contain"
-            },
-            {
-                data: byteBooks,
-                fit: "contain"
-            },
-        ]
-    },
-    {
-        id: 2,
-        title: 'Byte Books',
-        description: 'A mobile app that helps people with short attentions spans to read more',
-        images: [
-            {
-                data: byteBooksPhone,
-                fit: "contain"
-            },
-            {
-                data: byteBooks,
-                fit: "contain"
-            },
-        ]
-    }
 ]
 
 export const ProjectData = [
@@ -402,13 +368,203 @@ export const ProjectData = [
                     },
                 ]
             },
+        ]
+    },
+    {
+        id: 2,
+        title: 'Bank Loan Predictor',
+        description: 'A machine learning model that can give a prediction weather to approve a bank loan request or not',
+        images: [
+            {
+                data: MLCartoon,
+                fit: "contain"
+            },
+            {
+                data: NeuralNetwork,
+                fit: "contain"
+            },
+            {
+                data: loanIcon,
+                fit: "contain"
+            },
+            {
+                data: dataset,
+                fit: "contain",
+            },
+            {
+                data: preprocessing,
+                fit: "contain",
+            },
+            {
+                data: results,
+                fit: "contain",
+            },
+            {
+                data: confusion,
+                fit: "contain",
+            }
+        ],
+        videos: [
+            {
+                data: null
+            }
+        ],
+        sections: [
             {
                 sectionType: SectionType.main,
-                header: "Byte Books",
+                header: "Bank Loan Predictor",
                 body: "",
                 paragraphs: [],
                 videoIndex: 0,
                 imageIndex: 0,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.paragraphImage,
+                header: "Motivation",
+                body: "For the simple banker worker, approving loans can be a time consuming and complex process. There," +
+                    "are many factors to consider such as credit score, income, married or not, number of kids etc. I " +
+                    "decided to try and make a model in python pandas that could streamline this process a bit, and ask as sort of a helper to" +
+                    "whomever is approving or disproving a loan. Considering the ethical fact that a human should make the final decision, " +
+                    "I was not worried about the model having extremely high validation (prediction accuracy) scores. The general goal was for the model," +
+                    "to sway the banker to a certain decision with at least an accuracy score of 75%.",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 2,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.pointGrid,
+                header: "Tested Models",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "Decision Tree Classifier",
+                        body: "Good first step for a decision making model",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "Random Forest Classifier",
+                        body: "Random forest could possibly alleviate some over-fitting as opposed to the decision tree classifier",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "Support Vector Classifier",
+                        body: "May be able to learn how important each of the training points is to represent the decision" +
+                            " boundary",
+                        imageIndex: 0
+                    },
+                    {
+                        header: "Gradient Boosting Classifier",
+                        body: "Same as Random forest but good to try for max prediction time and accuracy.",
+                        imageIndex: 0
+                    },
+                ]
+            },
+            {
+                sectionType: SectionType.image,
+                header: "The Dataset",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 3,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.basic,
+                header: "Preprocessing",
+                body: "The first step was to remove and data points that have missing values. the reason I did not fill in these values with, " +
+                    "say, an average or the data point above it is because each datapoint is independent as they are each different loan requests from different people. " +
+                    "Next, I had to convert any categorical or nominal data to numerical data. I did this using one hot encoding with the get_dummies function. Lastly, there were a few columns" +
+                    " that were boolean but as \"True\" and \"False\", so I just simply mapped those to 1 and 0 respectively.",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.image,
+                header: "",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 4,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.basic,
+                header: "Results",
+                body: "After running GridSearchCV on the selected models and hyperparameters, it was determined determined " +
+                    "that the SVC model was the most accurate model with these specific parameters; C = 0.005, gamma = 0.0001, kernel = linear. " +
+                    "these parameters just control how strict the decision boundary is and how defined the support vector points are. " +
+                    "The model manage to exceed my goal with a training accuracy score of 84% and testing accuracy score of 80%. The testing score being a few % lower" +
+                    " than training score inferred that there was a but of overwriting but not enough to be a problem in this case.",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 5,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.image,
+                header: "",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 5,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+            {
+                sectionType: SectionType.image,
+                header: "Other Visualization",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 6,
                 subsections: [
                     {
                         header: "",

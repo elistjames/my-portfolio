@@ -7,17 +7,17 @@ export const NavData = [
     {
         label: "Home",
         link: "landing-title",
-        icon: <BsPersonFill size={30}/>,
+        icon: <BsFillHouseFill size={30}/>,
     },
     {
         label: "About Me",
         link: "about-me",
-        icon: <FaLaptopCode size={30}/>,
+        icon: <BsPersonFill size={30}/>,
     },
     {
         label: "Projects",
         link: "landing-projects",
-        icon: <BsFillHouseFill size={30}/>,
+        icon: <FaLaptopCode size={30}/>,
     },
     {
         label: "Lets Connect",

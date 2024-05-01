@@ -27,7 +27,7 @@ const ToolBarComponent = ({expanded, handleLandingNavigate}) =>{
             <div className="tool-bar-container">
                 <ul className="tool-bar-list">
                     {NavData.map((nav, index) => (
-                        <li>
+                        <li key={index}>
                             {nav.icon}
                             <Link className="nav-text nav-header" onClick={() => handleNavigate(nav.link)}>{nav.label}</Link>
                         </li>

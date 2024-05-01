@@ -62,10 +62,17 @@ const ProjectPage = () =>{
                         return (
                             <AnimateContainer key={index}>
                                 <section>
-                                    <div className="div-inline-center span-div">
-                                        <Image className="section-image fill"
-                                               src={project.images[section.imageIndex].data}
-                                               alt="project image"/>
+                                    <div className="span-div">
+                                        <div className="span-div">
+                                            <div className="header">
+                                                {section.header}
+                                            </div>
+                                        </div>
+                                        <div className="div-inline-center span-div">
+                                            <Image className="section-image fill"
+                                                   src={project.images[section.imageIndex].data}
+                                                   alt="project image"/>
+                                        </div>
                                     </div>
                                 </section>
                             </AnimateContainer>
@@ -77,7 +84,7 @@ const ProjectPage = () =>{
                         return (
                             <AnimateContainer key={index}>
                                 <section>
-                                <div className="span-div">
+                                    <div className="span-div">
                                         <div className="header">{section.header}</div>
                                         <div className="side-to-side-div">
                                             <div className="paragraph-image-text blur-container">{section.body}</div>
