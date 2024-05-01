@@ -1,3 +1,5 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 :root {
   --purple: #5e00ff;
   --lighterBlue: #005791;
@@ -5,6 +7,7 @@
   --darkGrayTrans: rgba(124, 124, 124, 0.1);
   --darkerBlue: #00030e;
   --darkerBlueTranslucent: rgba(0, 0, 0, 0);
+  --translucentBlack: rgba(0, 0, 0, 0.66);
   --beige: #F3E8D7;
   --white: #ffffff;
   --grey: #c7c7c7;
@@ -227,13 +230,15 @@ section .header.landing{
   height: 58px;
   width: 100%;
   z-index: 1000;
+  background-color: var(--translucentBlack);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px black;
 }
 
 .nav-container{
-  width: 80%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 50px 0 50px;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
@@ -268,9 +273,8 @@ section .header.landing{
   outline: none;
 }
 
-.nav-btn:hover{
-  background: var(--darkerBlue);
-  box-shadow: inset 55px 0 40px 0 var(--purple), inset 150px 0 30px 0 var(--blue);
+.nav-btn:active{
+  color: var(--darkerBlue);
 }
 
 .my-links{
@@ -293,8 +297,11 @@ section .header.landing{
   border: none;
 }
 
+.tool-bar-toggle.active{
+  background: none;
+}
+
 .tool-bar-toggle:hover{
-  appearance:none;
   background: none;
 }
 
@@ -302,18 +309,19 @@ section .header.landing{
   color: var(--white);
   position: fixed;
   z-index: 500;
-  top: var(--navHeight);
-  left:-100%;
-  background: var(--darkerBlue);
-  width: 300px;
+  top: -100%;
+  left:0;
+  backdrop-filter: blur(10px);
+  background: var(--translucentBlack);
+  width: 100%;
   height: 100%;
-  box-shadow: 2px 0px 8px black;
-  transition: 850ms;
+  box-shadow: 2px 0 8px black;
+  transition: ease-in 350ms;
 }
 
 .toolbar.active{
-  left: 0;
-  transition: 350ms;
+  top: var(--navHeight);
+  transition: ease-out 350ms;
 }
 
 .tool-bar-container{
@@ -329,18 +337,17 @@ section .header.landing{
   display: inline-flex;
   align-items: center;
   width: 100%;
-  min-height: 40px;
+  min-height: 80px;
 }
 
 .nav-text{
   text-decoration: none;
   color: var(--white);
-
   margin: 0 0 0 0.5rem;
 }
 
 .nav-header{
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .tool-bar-header{
@@ -381,6 +388,11 @@ section .header.landing{
     background: var(--darkerBlue);
     box-shadow: inset 30px 0 40px 0 var(--purple), inset 60px 0 30px 0 var(--blue);
   }
+
+  .nav-btn:hover{
+    background: var(--darkerBlue);
+    box-shadow: inset 55px 0 40px 0 var(--purple), inset 150px 0 30px 0 var(--blue);
+  }
 }
 
 .to-top-btn.hidden {
@@ -388,16 +400,15 @@ section .header.landing{
   transition: ease-out 0.3s;
 }
 
-@media (max-width: 640px){
-  .toolbar{
-    width: 100%;
-    left: 0;
-    top:-100%;
+@media (min-width: 641px) and (max-width: 835px) {
+  .nav-container{
+    padding: 0 5% 0 5%;
   }
+}
 
-  .toolbar.active{
-    top: var(--navHeight);
-    transition: 350ms;
+@media (max-width: 640px){
+  .nav-container{
+    padding: 0 5% 0 0.8rem;
   }
 }
 
@@ -464,5 +475,3 @@ section .header.landing{
     font-size: 1.5rem;
   }
 }
-
-@import 'bootstrap/dist/css/bootstrap.min.css';

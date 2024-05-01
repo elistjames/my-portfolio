@@ -15,7 +15,7 @@ const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
 
 
     const isMobile = useMediaQuery({
-        query: '(max-width: 700px)'
+        query: '(max-width: 640px)'
     });
 
     const isSmallMobile = useMediaQuery({
@@ -23,7 +23,7 @@ const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
     });
 
     const handleNavigate = async (section) => {
-        if (currentRoute.pathname !== "/" && currentRoute.pathname !== "/landing-title" && currentRoute.pathname !== "/about-me" && currentRoute.pathname !== "/landing-projects") {
+        if (currentRoute.pathname !== "/" && currentRoute.pathname !== "/landing-title" && currentRoute.pathname !== "/about-me" && currentRoute.pathname !== "/landing-projects" && currentRoute.pathname !== "/lets-connect") {
             window.location.assign(`/${section}`);
         }
         else{
@@ -56,16 +56,25 @@ const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
         <div id="top-nav" data-bs-theme="dark" fixed="top">
             <div className="nav-container">
                 <div className="div-inline-center">
-                    <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderLinkedIn}>
-                        <Button className="social-link-btn" variant="link" href="https://www.linkedin.com/in/eli-stjames/" target="_blank">
-                            <BsLinkedin size={25}></BsLinkedin>
-                        </Button>
-                    </OverlayTrigger>
-                    <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderGitHub}>
-                        <Button className="social-link-btn" variant="link" href="https://github.com/elistjames" target="_blank">
-                            <BsGithub size={25}></BsGithub>
-                        </Button>
-                    </OverlayTrigger>
+                    {isMobile &&
+                        <button className="tool-bar-toggle" onClick={handleToggleToolBar}>
+                            <BsList size={30}></BsList>
+                        </button>
+                    }
+                    {!isMobile &&
+                        <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderLinkedIn}>
+                            <Button className="social-link-btn" variant="link" href="https://www.linkedin.com/in/eli-stjames/" target="_blank">
+                                <BsLinkedin size={25}></BsLinkedin>
+                            </Button>
+                        </OverlayTrigger>
+                    }
+                    {!isMobile &&
+                        <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderGitHub}>
+                            <Button className="social-link-btn" variant="link" href="https://github.com/elistjames" target="_blank">
+                                <BsGithub size={25}></BsGithub>
+                            </Button>
+                        </OverlayTrigger>
+                    }
                     {/*<OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderResume}>*/}
                     {/*    <Button className="social-link-btn" variant="link" href={}>*/}
                     {/*        <BsFileEarmarkPerson size={25}/>*/}
@@ -73,11 +82,31 @@ const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
                     {/*</OverlayTrigger>*/}
                 </div>
                 <div className="div-inline-center">
-                    <Link className="nav-link" onClick={() => handleNavigate("landing-title")}>Home</Link>
-                    <Link className="nav-link" onClick={() => handleNavigate("about-me")}>About Me</Link>
-                    <Link className="nav-link" onClick={() => handleNavigate("landing-projects")}>Projects</Link>
+                    {!isMobile &&
+                        <Link className="nav-link" onClick={() => handleNavigate("landing-title")}>Home</Link>
+                    }
+                    {!isMobile &&
+                        <Link className="nav-link" onClick={() => handleNavigate("about-me")}>About Me</Link>
+                    }
+                    {!isMobile &&
+                        <Link className="nav-link" onClick={() => handleNavigate("landing-projects")}>Projects</Link>
+                    }
+                    {isMobile &&
+                        <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderLinkedIn}>
+                            <Button className="social-link-btn" variant="link" href="https://www.linkedin.com/in/eli-stjames/" target="_blank">
+                                <BsLinkedin size={25}></BsLinkedin>
+                            </Button>
+                        </OverlayTrigger>
+                    }
+                    {isMobile &&
+                        <OverlayTrigger placement="bottom" delay={{show: 100, hide: 100}} overlay={renderGitHub}>
+                            <Button className="social-link-btn" variant="link" href="https://github.com/elistjames" target="_blank">
+                                <BsGithub size={25}></BsGithub>
+                            </Button>
+                        </OverlayTrigger>
+                    }
                     <div className="btn-gradient">
-                        <Button className="nav-btn" onClick={() => handleNavigate("lets-connect")}>Let's Connect</Button>
+                        <button className="nav-btn" onClick={() => handleNavigate("lets-connect")}>Let's Connect</button>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './LandingPage.css';
 import {motion, stagger, useAnimate, useInView} from "framer-motion"
 import ProjectCardComponent from "../components/ProjectCardComponent";
@@ -9,8 +9,11 @@ import ProjectCards, {AnimateMode} from "../components/ProjectCards";
 import AnimateContainer from "../components/AnimateContainer";
 
 const LandingPage = ({landingSection}) =>{
+
+    let {section} = useParams();
+
     const [scope, animate] = useAnimate();
-    const {section} = useParams();
+
 
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
@@ -36,6 +39,8 @@ const LandingPage = ({landingSection}) =>{
 
 
     useEffect(() => {
+
+        if(landingSection === "sup") return;
         const sectionElement = document.getElementById(landingSection);
         sectionElement.scrollIntoView({ block: landingSection === "landing-title" ? "center" : "center", behavior: "smooth"});
     }, [landingSection]);
@@ -44,7 +49,7 @@ const LandingPage = ({landingSection}) =>{
         <>
             <div ref={scope} className="page">
                 <section id="landing-title" className="main span-div">
-                    <div  className="div-inline-center span-div">
+                    <div className="div-inline-center span-div">
                         <div className="intro-container">
                             <div className="code-intro-container">
                                 <div className="code-intro1 coding-font">
@@ -67,11 +72,11 @@ const LandingPage = ({landingSection}) =>{
                         </div>
                     </div>
                 </section>
-                <section id="about-me">
+                <section>
                     <div className="div-inline-center">
                         <div id="about-me-container">
                             <AnimateContainer>
-                                <div className="header landing">
+                                <div  id="about-me" className="header landing">
                                     About Me
                                 </div>
                             </AnimateContainer>
@@ -101,18 +106,17 @@ const LandingPage = ({landingSection}) =>{
                         <ProjectCards excludeId={-1}></ProjectCards>
                     </div>
                 </section>
-                <section id="lets-connect">
-                    <div className="div-inline-center">
-                        <div>
+                <section  id="lets-connect">
+                    <div className="div-inline-center span-div" style={{flexDirection: "column"}}>
                             <AnimateContainer>
                                 <div className="header landing">Send me a message</div>
                             </AnimateContainer>
-                            <AnimateContainer>
-                                <div className="blur-container">
-                                    <EmailFormComponent/>
-                                </div>
-                            </AnimateContainer>
+                        <div className="lets-connect-form">
+                            <div className="blur-container">
+                                <EmailFormComponent/>
+                            </div>
                         </div>
+
                     </div>
                 </section>
             </div>

@@ -18,7 +18,9 @@ function useParallax(value, distance1, distance2) {
 }
 
 function App() {
+    const [toolBarActive, setToolBarActive] = useState(false);
     const [landingSection, setLandingSection] = useState("landing-title");
+    const [tempLandingSection, setTempLandingSection] = useState("landing-title");
     const [atTop, setAtTop] = useState(true);
     const background = useRef();
 
@@ -28,12 +30,17 @@ function App() {
 
     React.useEffect(() => {
         window.onscroll = () => {
-            setAtTop(window.scrollY === 0);
+            setAtTop(window.scrollY <= 10);
         }
 
 
         return () => (window.onscroll = null);
     });
+
+    useEffect(() => {
+        setLandingSection(tempLandingSection);
+        setTempLandingSection(tempLandingSection);
+    }, [landingSection]);
 
     const isMobile = useMediaQuery({
         query: '(max-width: 640px)'
@@ -44,14 +51,15 @@ function App() {
     });
 
     const handleLandingNavigate = (section) =>{
-        setLandingSection(section);
+        setToolBarActive(false);
+        setTempLandingSection(section);
+        setLandingSection("sup");
     }
 
     const handleToolBarToggle = () =>{
       setToolBarActive(!toolBarActive);
     }
 
-    const [toolBarActive, setToolBarActive] = useState(false);
     return (
       <div className="app-wrapper">
           <motion.div ref={background} className="background-texture" style={{translateY: y}}>
@@ -62,10 +70,10 @@ function App() {
           </button>
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
-              <ToolBarComponent expanded={toolBarActive}></ToolBarComponent>
+              <ToolBarComponent expanded={toolBarActive} handleLandingNavigate={handleLandingNavigate}></ToolBarComponent>
               <div className="viewport">
                   <Routes>
-                      <Route path='/:section' element={<LandingPage landingSection={landingSection}/>}/>
+                      <Route path='/:section' element={<LandingPage landingSection={landingSection} handleLandingNavigate={handleLandingNavigate}/>}/>
                       <Route path="/project/:id" element={<ProjectPage/>}/>
                       <Route path="/" element={<Navigate to="/landing-title"/>}/>
                   </Routes>
