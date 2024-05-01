@@ -447,9 +447,9 @@ export const ProjectData = [
                 body: "For the simple banker worker, approving loans can be a time consuming and complex process. There," +
                     "are many factors to consider such as credit score, income, married or not, number of kids etc. I " +
                     "decided to try and make a model in python pandas that could streamline this process a bit, and ask as sort of a helper to" +
-                    "whomever is approving or disproving a loan. Considering the ethical fact that a human should make the final decision, " +
+                    " whomever is approving or disproving a loan. Considering the ethical fact that a human should make the final decision, " +
                     "I was not worried about the model having extremely high validation (prediction accuracy) scores. The general goal was for the model," +
-                    "to sway the banker to a certain decision with at least an accuracy score of 75%.",
+                    " to sway the banker to a certain decision with at least an accuracy score of 75%.",
                 paragraphs: [],
                 videoIndex: 0,
                 imageIndex: 2,
@@ -511,7 +511,7 @@ export const ProjectData = [
                 sectionType: SectionType.basic,
                 header: "Preprocessing",
                 body: "The first step was to remove and data points that have missing values. the reason I did not fill in these values with, " +
-                    "say, an average or the data point above it is because each datapoint is independent as they are each different loan requests from different people. " +
+                    "say, an average or the data point above it is because each data point is independent as they are each different loan requests from different people. " +
                     "Next, I had to convert any categorical or nominal data to numerical data. I did this using one hot encoding with the get_dummies function. Lastly, there were a few columns" +
                     " that were boolean but as \"True\" and \"False\", so I just simply mapped those to 1 and 0 respectively.",
                 paragraphs: [],

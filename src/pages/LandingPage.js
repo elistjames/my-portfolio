@@ -81,15 +81,17 @@ const LandingPage = ({landingSection}) =>{
                             </AnimateContainer>
                             <AnimateContainer>
                                 <div className="blur-container landing">
-                                    <p>I'm a recent graduate software engineer from the University of Calgary,
-                                        with a strong passion for web development. Crafting dynamic web pages using
-                                        frameworks like React and Angular is where I truly shine. But my skills don't
-                                        stop there; I love diving into the worlds of machine learning and DevOps, using
-                                        my knowledge to solve complex problems and streamline processes. What drives me?
-                                        It's the thrill of innovation and the satisfaction of finding solutions that
-                                        make
-                                        a real impact. I'm constantly seeking new challenges and opportunities to learn
-                                        and grow in this ever-evolving field.</p>
+                                    <p style={{fontSize:"18px"}}>I am 24 year old software engineering graduate from the University of Calgary,
+                                        with a strong passion for app development. Crafting dynamic web apps and pages using
+                                        frameworks like React and Angular is where my creative side shines, this website will showcase that. But my skills don't
+                                        stop there; I like to explore the world of machine learning and DevOps, and use
+                                        that knowledge to solve complex problems and streamline processes. In terms of my personal characteristics, my self motivation and persistence
+                                        have allowed me to stick with problems and maintain productivity over long projects, inevitably reaching my goals and deadlines.
+                                        Having being exposed to many collaborative environments throughout my life like team sports and past jobs, I have honed
+                                        the ability to optimise workflow and relationships when working on a team with ease.
+                                        In my spare time I like to fish, play hockey, and if I'm bored, see if I can thing of the next bit app idea.
+                                        With the constant growth and innovation in software, I'm always seeking new challenges
+                                        and opportunities to learn and grow in this ever-evolving field.</p>
                                 </div>
                             </AnimateContainer>
                         </div>

@@ -24,6 +24,7 @@
 }
 
 .code-intro1 span, .code-intro2 span{
+    font-family: "Kode Mono", sans-serif;
     opacity: 0;
 }
 
