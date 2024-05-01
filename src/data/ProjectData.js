@@ -15,6 +15,7 @@ import dataset from '../resources/dataset.png';
 import preprocessing from '../resources/preprocessing.png';
 import results from '../resources/results.png';
 import confusion from '../resources/confusion-matrix.png';
+import byteBooksMobile from '../resources/bytebooksmobile.mp4';
 
 
 export const SectionType = {
@@ -22,6 +23,7 @@ export const SectionType = {
     basic: "basic",
     multiParagraph: "multiParagraph",
     image: "image",
+    video: "video",
     imageParagraph: "imageParagraph",
     paragraphImage: "paragraphImage",
     subsections: "subsections",
@@ -254,7 +256,7 @@ export const ProjectData = [
         ],
         videos: [
             {
-                data: null
+                data: byteBooksMobile
             }
         ],
         sections: [
@@ -366,6 +368,21 @@ export const ProjectData = [
                             "for the React app, Express API and MySQL database respectively. This allowed me to run all three layers inside docker.",
                         imageIndex: 5
                     },
+                ]
+            },
+            {
+                sectionType: SectionType.video,
+                header: "",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
                 ]
             },
         ]

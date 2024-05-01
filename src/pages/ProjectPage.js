@@ -77,6 +77,28 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
+                    case SectionType.video:
+                        return(
+                            <AnimateContainer key={index}>
+                                <section className="main">
+                                    <div className="span-div">
+                                        <div className="span-div">
+                                            <div className="header">
+                                                {section.header}
+                                            </div>
+                                        </div>
+                                        <div className="div-inline-center span-div" style={{height: "100%"}}>
+                                            <iframe
+                                                width="100%"
+                                                height="100%"
+                                                className="section-video"
+                                                src={project.videos[section.videoIndex].data}
+                                            />
+                                        </div>
+                                    </div>
+                                </section>
+                            </AnimateContainer>
+                        );
                     case SectionType.imageParagraph:
 
                         break;
