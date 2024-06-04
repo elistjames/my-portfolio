@@ -89,7 +89,7 @@ const LandingPage = ({landingSection}) =>{
                                         have allowed me to stick with problems and maintain productivity over long projects, inevitably reaching my goals and deadlines.
                                         Having been exposed to many collaborative environments throughout my life like team sports and past jobs, I have honed
                                         the ability to optimize workflow and relationships when working on a team with ease.
-                                        In my spare time I like to fish, play hockey, and if I'm bored, see if I can think of the next bit app idea.
+                                        In my spare time I like to fish, play hockey, and if I'm bored, see if I can think of the next big app idea.
                                         With the constant growth and innovation in software, I'm always seeking new challenges
                                         and opportunities to learn and grow in this ever-evolving field.</p>
                                 </div>
