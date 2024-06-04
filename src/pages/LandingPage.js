@@ -84,12 +84,12 @@ const LandingPage = ({landingSection}) =>{
                                     <p style={{fontSize:"18px"}}>I am 24 year old software engineering graduate from the University of Calgary,
                                         with a strong passion for app development. Crafting dynamic web apps and pages using
                                         frameworks like React and Angular is where my creative side shines, this website will showcase that. But my skills don't
-                                        stop there; I like to explore the world of machine learning and DevOps, and use
-                                        that knowledge to solve complex problems and streamline processes. In terms of my personal characteristics, my self motivation and persistence
+                                        stop there; I like to explore the world of machine learning and DevOps then use
+                                        that knowledge to solve complex problems and streamline processes. In terms of my personal characteristics, my self-motivation and persistence
                                         have allowed me to stick with problems and maintain productivity over long projects, inevitably reaching my goals and deadlines.
                                         Having been exposed to many collaborative environments throughout my life like team sports and past jobs, I have honed
                                         the ability to optimize workflow and relationships when working on a team with ease.
-                                        In my spare time I like to fish, play hockey, and if I'm bored, see if I can thing of the next bit app idea.
+                                        In my spare time I like to fish, play hockey, and if I'm bored, see if I can think of the next bit app idea.
                                         With the constant growth and innovation in software, I'm always seeking new challenges
                                         and opportunities to learn and grow in this ever-evolving field.</p>
                                 </div>
