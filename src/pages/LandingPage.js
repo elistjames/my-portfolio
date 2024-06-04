@@ -87,8 +87,8 @@ const LandingPage = ({landingSection}) =>{
                                         stop there; I like to explore the world of machine learning and DevOps, and use
                                         that knowledge to solve complex problems and streamline processes. In terms of my personal characteristics, my self motivation and persistence
                                         have allowed me to stick with problems and maintain productivity over long projects, inevitably reaching my goals and deadlines.
-                                        Having being exposed to many collaborative environments throughout my life like team sports and past jobs, I have honed
-                                        the ability to optimise workflow and relationships when working on a team with ease.
+                                        Having been exposed to many collaborative environments throughout my life like team sports and past jobs, I have honed
+                                        the ability to optimize workflow and relationships when working on a team with ease.
                                         In my spare time I like to fish, play hockey, and if I'm bored, see if I can thing of the next bit app idea.
                                         With the constant growth and innovation in software, I'm always seeking new challenges
                                         and opportunities to learn and grow in this ever-evolving field.</p>

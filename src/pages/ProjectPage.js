@@ -1,8 +1,8 @@
-import {ProjectData} from "../data/ProjectData";
+import {ProjectData} from "../components/ProjectData";
 import {useParams} from "react-router-dom";
 import React from "react";
 import Image from 'react-bootstrap/Image';
-import {SectionType} from "../data/ProjectData";
+import {SectionType} from "../components/ProjectData";
 import "./ProjectPage.css";
 import AnimateContainer from "../components/AnimateContainer";
 import PointGridComponent from "../components/PointGridComponent";

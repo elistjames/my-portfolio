@@ -1,5 +1,5 @@
 import {useLocation} from "react-router-dom";
-import {NavData} from "../data/NavData";
+import {NavData} from "./NavData";
 import {useMediaQuery} from "react-responsive";
 
 const ToolBarComponent = ({expanded, handleLandingNavigate}) =>{

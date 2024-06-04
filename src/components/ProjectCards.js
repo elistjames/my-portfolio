@@ -1,4 +1,4 @@
-import {LandingPageProjects} from "../data/ProjectData";
+import {LandingPageProjects} from "./ProjectData";
 import React from "react";
 import ProjectCardComponent from "./ProjectCardComponent";
 
