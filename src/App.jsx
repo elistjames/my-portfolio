@@ -2,26 +2,20 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom
 import NavBarComponent from "./components/NavBarComponent";
 import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
-import React, {lazy, Suspense, useCallback, useEffect, useState} from "react";
+import React, {lazy, Suspense, useCallback, useState} from "react";
 import {motion, useScroll, useTransform} from "framer-motion";
 import { BsChevronUp } from "react-icons/bs";
+import {useScrollAtTop} from "./hooks/useScrollAtTop";
 
 const ProjectPage = lazy(() => import("./pages/ProjectPage"));
 
 function App() {
     const [toolBarActive, setToolBarActive] = useState(false);
     const [scrollTarget, setScrollTarget] = useState(null);
-    const [atTop, setAtTop] = useState(true);
+    const atTop = useScrollAtTop();
 
     const {scrollYProgress} = useScroll();
     const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
-
-    useEffect(() => {
-        const onScroll = () => setAtTop(window.scrollY <= 10);
-        onScroll();
-        window.addEventListener("scroll", onScroll, {passive: true});
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
 
     // The nonce lets the landing page re-scroll to a section it is already
     // sitting on, which a bare section string could not express.
