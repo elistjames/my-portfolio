@@ -1,10 +1,10 @@
 import pasonLogo from '../resources/Pason.png';
-import capstone from '../resources/capstone.jpg';
-import byteBooks from '../resources/bytebookslogo.png';
-import byteBooksPhone from '../resources/bytebooksphone.png';
-import MLCartoon from '../resources/ml_cartoon.png';
-import NeuralNetwork from '../resources/neural_network.png';
-import loanIcon from '../resources/loan_icon.png';
+import capstone from '../resources/capstone.webp';
+import byteBooks from '../resources/bytebookslogo.webp';
+import byteBooksPhone from '../resources/bytebooksphone.webp';
+import MLCartoon from '../resources/ml_cartoon.webp';
+import NeuralNetwork from '../resources/neural_network.webp';
+import loanIcon from '../resources/loan_icon.webp';
 
 // Card summaries only. Kept apart from ProjectData so the landing page does not
 // pull the full per-project page content into its chunk. The ids here must stay

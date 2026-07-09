@@ -1,11 +1,11 @@
 import {ProjectData} from "../components/ProjectData";
 import {useParams} from "react-router-dom";
 import React from "react";
-import Image from 'react-bootstrap/Image';
 import {SectionType} from "../components/ProjectData";
 import "./ProjectPage.css";
 import AnimateContainer from "../components/AnimateContainer";
 import PointGridComponent from "../components/PointGridComponent";
+import SectionMedia from "../components/SectionMedia";
 import SubSectionsComponent from "../components/SubSectionsComponent";
 
 
@@ -26,9 +26,10 @@ const ProjectPage = () =>{
                                             {project.title}
                                         </div>
                                         <div className="image-container">
-                                            <Image className="section-image main"
-                                                   src={project.images[section.imageIndex].data} alt={project.title}
-                                                   decoding="async" fetchPriority="high"/>
+                                            <SectionMedia className="section-image main"
+                                                          image={project.images[section.imageIndex]}
+                                                          alt={project.title}
+                                                          eager/>
                                         </div>
                                     </div>
                                 </section>
@@ -63,10 +64,9 @@ const ProjectPage = () =>{
                                             </div>
                                         </div>
                                         <div className="div-inline-center span-div">
-                                            <Image className="section-image fill"
-                                                   src={project.images[section.imageIndex].data}
-                                                   alt={section.header}
-                                                   loading="lazy" decoding="async"/>
+                                            <SectionMedia className="section-image fill"
+                                                          image={project.images[section.imageIndex]}
+                                                          alt={section.header}/>
                                         </div>
                                     </div>
                                 </section>
@@ -111,11 +111,9 @@ const ProjectPage = () =>{
 
                                             <AnimateContainer slideIn={true} amount={0}>
                                                 <div className="image-container">
-                                                    <Image className="section-image phone-gif"
-                                                           src={project.images[section.imageIndex].data}
-                                                           alt={section.header}
-                                                           loading="lazy" decoding="async"
-                                                           style={{objectFit: project.images[section.imageIndex].fit}}/>
+                                                    <SectionMedia className="section-image"
+                                                                  image={project.images[section.imageIndex]}
+                                                                  alt={section.header}/>
                                                 </div>
                                             </AnimateContainer>
                                         </div>

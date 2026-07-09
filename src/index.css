@@ -99,7 +99,7 @@ code {
   left: 0;
   width: 100%;
   height: 120%;
-  background-image: url(resources/dark-background.jpg);
+  background-image: url(resources/dark-background.webp);
   background-repeat: no-repeat;
   background-size: cover;
   /* Parallaxed every scroll frame; keep it on its own layer so the backdrop-filter
