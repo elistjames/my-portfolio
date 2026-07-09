@@ -12,9 +12,12 @@ export default defineConfig({
     build: {
         // Matches the old CRA behaviour: no sourcemap shipped to production.
         sourcemap: false,
-        // CRA inlined assets under 10kB; Vite's default is 4kB. Keeping the old
-        // threshold avoids turning the small logos into extra network requests.
-        assetsInlineLimit: 10240,
+        // Emit every asset as a file. Now that the images are small, inlining
+        // them as base64 cost more than it saved: at Vite's 4kB default the
+        // ProjectPage chunk grew 6.4 -> 17.3 kB gzipped, because base64 both
+        // adds ~33% and compresses poorly. As separate files they are also
+        // cacheable across deploys.
+        assetsInlineLimit: 0,
     },
     test: {
         globals: true,
