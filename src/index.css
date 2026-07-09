@@ -183,10 +183,6 @@ section .header.landing{
   box-shadow: 0 2px 30px black;
 }
 
-.blur-container.landing {
-  text-align: center;
-}
-
 .div-inline-center{
   display: inline-flex;
   justify-content: center;
