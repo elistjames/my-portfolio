@@ -3,6 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {MemoryRouter, Route, Routes, useLocation} from 'react-router-dom';
 import ProjectCards from './ProjectCards';
+import {LandingPageProjects} from './LandingProjects';
 
 const Where = () => <div data-testid="loc">{useLocation().pathname}</div>;
 
@@ -18,13 +19,15 @@ const setup = () => render(
 
 const path = () => screen.getByTestId('loc').textContent;
 
+// Card order is independent of project id, so read the expected target off the
+// data rather than hard-coding it.
 test('the whole card is a link to its project', async () => {
     const user = userEvent.setup();
     const {container} = setup();
 
     await user.click(container.querySelector('#card-title'));
 
-    expect(path()).toBe('/project/0');
+    expect(path()).toBe(`/project/${LandingPageProjects[0].id}`);
 });
 
 // The card is an anchor, so anything clickable inside it must not bubble a
