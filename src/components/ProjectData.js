@@ -4,8 +4,10 @@ import byteBooks from '../resources/bytebookslogo.webp';
 import byteBooksPhone from '../resources/bytebooksphone.webp';
 import panZoomPhone from '../resources/pan-zoom-phone.mp4';
 import panZoomPhonePoster from '../resources/pan-zoom-phone-poster.webp';
+import panZoomPhoneMask from '../resources/pan-zoom-phone-mask.png';
 import panZoomPc from '../resources/pan-zoom-pc.mp4';
 import panZoomPcPoster from '../resources/pan-zoom-pc-poster.webp';
+import panZoomPcMask from '../resources/pan-zoom-pc-mask.png';
 import mysql from '../resources/mysql.webp';
 import express from '../resources/expressjs.webp';
 import reactLogo from '../resources/reactlogo.webp';
@@ -47,11 +49,13 @@ export const ProjectData = [
             {
                 data: panZoomPhonePoster,
                 video: panZoomPhone,
+                mask: panZoomPhoneMask,
                 fit: "contain",
             },
             {
                 data: panZoomPcPoster,
                 video: panZoomPc,
+                mask: panZoomPcMask,
                 fit: "contain",
             }
         ],
