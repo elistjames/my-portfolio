@@ -42,6 +42,22 @@ const ProjectPage = () =>{
                                 </section>
                             </AnimateContainer>
                         );
+                    case SectionType.mainImage:
+                        return(
+                            <AnimateContainer key={index}>
+                                <section className="main">
+                                    <div className="div-inline-center span-div">
+                                        {/* This image is the whole hero, so it carries the page's
+                                            accessible name — section.header is empty here. */}
+                                        <SectionMedia className="section-image fill"
+                                                        image={project.images[section.imageIndex]}
+                                                        alt={project.title}
+                                                        eager/>
+                                    </div>
+                                    <div className="span-div"></div>
+                                </section>
+                            </AnimateContainer>
+                        );
                     case SectionType.multiParagraph:
                         return (
                             <AnimateContainer key={index}>

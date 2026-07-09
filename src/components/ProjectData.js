@@ -20,10 +20,13 @@ import preprocessing from '../resources/preprocessing.webp';
 import results from '../resources/results.webp';
 import confusion from '../resources/confusion-matrix.webp';
 import byteBooksMobile from '../resources/bytebooksmobile.mp4';
+import cofiLogo from '../resources/cofi-logo.svg';
+import cofiIcon from '../resources/cofi-icon.webp';
 
 
 export const SectionType = {
     main: "main",
+    mainImage: "mainImage",
     basic: "basic",
     multiParagraph: "multiParagraph",
     image: "image",
@@ -537,6 +540,45 @@ export const ProjectData = [
                 paragraphs: [],
                 videoIndex: 0,
                 imageIndex: 6,
+                subsections: [
+                    {
+                        header: "",
+                        body: "",
+                        imageIndex: 0
+                    }
+                ]
+            },
+        ]
+    },
+    // Scaffold only. `id` must equal this entry's array position — ProjectPage
+    // looks the project up as ProjectData[id]. Add sections below as they are
+    // written; the page renders whatever the array holds.
+    {
+        id: 3,
+        title: 'cofi.ai',
+        images: [
+            {
+                data: cofiLogo,
+                fit: "contain"
+            },
+            {
+                data: cofiIcon,
+                fit: "cover"
+            }
+        ],
+        videos: [
+            {
+                data: null
+            }
+        ],
+        sections: [
+            {
+                sectionType: SectionType.mainImage,
+                header: "",
+                body: "",
+                paragraphs: [],
+                videoIndex: 0,
+                imageIndex: 0,
                 subsections: [
                     {
                         header: "",
