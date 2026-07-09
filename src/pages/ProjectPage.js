@@ -27,7 +27,8 @@ const ProjectPage = () =>{
                                         </div>
                                         <div className="image-container">
                                             <Image className="section-image main"
-                                                   src={project.images[section.imageIndex].data} alt="project image"/>
+                                                   src={project.images[section.imageIndex].data} alt={project.title}
+                                                   decoding="async" fetchPriority="high"/>
                                         </div>
                                     </div>
                                 </section>
@@ -64,7 +65,8 @@ const ProjectPage = () =>{
                                         <div className="div-inline-center span-div">
                                             <Image className="section-image fill"
                                                    src={project.images[section.imageIndex].data}
-                                                   alt="project image"/>
+                                                   alt={section.header}
+                                                   loading="lazy" decoding="async"/>
                                         </div>
                                     </div>
                                 </section>
@@ -81,12 +83,17 @@ const ProjectPage = () =>{
                                             </div>
                                         </div>
                                         <div className="div-inline-center span-div" style={{height: "100%"}}>
-                                            <iframe
+                                            {/* #t=0.1 makes the browser render the first frame as a
+                                                poster without preloading the whole file. */}
+                                            <video
                                                 width="100%"
                                                 height="100%"
                                                 className="section-video"
                                                 title="project video"
-                                                src={project.videos[section.videoIndex].data}
+                                                src={`${project.videos[section.videoIndex].data}#t=0.1`}
+                                                preload="metadata"
+                                                controls
+                                                playsInline
                                             />
                                         </div>
                                     </div>
@@ -106,8 +113,9 @@ const ProjectPage = () =>{
                                                 <div className="image-container">
                                                     <Image className="section-image phone-gif"
                                                            src={project.images[section.imageIndex].data}
-                                                           alt="project image"
-                                                           style={{objectFit: project.images[section.imageIndex].objectFit}}/>
+                                                           alt={section.header}
+                                                           loading="lazy" decoding="async"
+                                                           style={{objectFit: project.images[section.imageIndex].fit}}/>
                                                 </div>
                                             </AnimateContainer>
                                         </div>
