@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import './LandingPage.css';
 import {motion, stagger, useAnimate} from "framer-motion"
 
@@ -19,26 +19,30 @@ const LandingPage = ({scrollTarget}) =>{
     const codeIntro2= "> I am:"
     const abstractText = "Software Engineering,|,Full Stack Development,|,Machine Learning";
 
-    const scrollToSection = useCallback((id) => {
+    const scrollToSection = useCallback((id, behavior) => {
         const sectionElement = document.getElementById(id);
         if (!sectionElement) return;
-        sectionElement.scrollIntoView({block: "center", behavior: "smooth"});
+        sectionElement.scrollIntoView({block: "center", behavior});
     }, []);
 
-    // The URL owns the scroll position on mount and on route change.
-    useEffect(() => {
-        scrollToSection(section);
+    // The URL owns the scroll position on arrival. This jumps rather than
+    // animates: the browser preserves the scroll offset across a route change,
+    // so a smooth scroll here would slide up from wherever the project page was
+    // left instead of simply landing on the requested section.
+    useLayoutEffect(() => {
+        scrollToSection(section, "auto");
     }, [section, scrollToSection]);
 
-    // Nav clicks scroll without changing the route. Skipping the first run keeps
-    // a stale target from fighting the URL-driven scroll above on mount.
+    // Nav clicks scroll without changing the route, and those should animate.
+    // Skipping the first run keeps a stale target from fighting the arrival
+    // scroll above on mount.
     useEffect(() => {
         if (!mounted.current) {
             mounted.current = true;
             return;
         }
         if (!scrollTarget) return;
-        scrollToSection(scrollTarget.section);
+        scrollToSection(scrollTarget.section, "smooth");
     }, [scrollTarget, scrollToSection]);
 
     useEffect(() => {

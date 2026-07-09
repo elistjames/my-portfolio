@@ -1,6 +1,6 @@
 import {ProjectData} from "../components/ProjectData";
 import {useParams} from "react-router-dom";
-import React from "react";
+import React, {useLayoutEffect} from "react";
 import {SectionType} from "../components/ProjectData";
 import "./ProjectPage.css";
 import AnimateContainer from "../components/AnimateContainer";
@@ -12,6 +12,13 @@ import SubSectionsComponent from "../components/SubSectionsComponent";
 const ProjectPage = () =>{
     const { id } = useParams();
     const project = ProjectData[id];
+
+    // The browser keeps the scroll offset across a client-side route change, so
+    // arriving from a scrolled landing page would drop you into the middle of
+    // this one. Before paint, not after, or the wrong position flashes first.
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
     return (
         <div className="page">
