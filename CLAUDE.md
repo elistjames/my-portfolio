@@ -49,7 +49,7 @@ These are the source of truth for every project:
 
 They are deliberately separate modules. `ProjectPage` is lazy-loaded via `React.lazy`, so keeping the heavy per-project content out of `LandingProjects.js` keeps it out of the main chunk — importing `ProjectData` from the landing page would undo the code split.
 
-`ProjectPage.jsx` is a `switch` over `section.sectionType` that renders each variant. Sections don't hold media directly; they hold `imageIndex` / `videoIndex` integers that index into the project's own `images` / `videos` arrays. Adding a section type means adding both the `SectionType` entry and a `case` in that switch.
+`ProjectPage.jsx` is a `switch` over `section.sectionType` that renders each variant. Image entries render through `SectionMedia`, which emits a `<video>` when the entry carries a `video` key (an mp4, with `data` serving as its poster) and an `<img>` otherwise — so an animated asset needs no new `SectionType`. Sections don't hold media directly; they hold `imageIndex` / `videoIndex` integers that index into the project's own `images` / `videos` arrays. Adding a section type means adding both the `SectionType` entry and a `case` in that switch.
 
 Adding a project requires appending to **both** arrays with the `id` matching the array position — `ProjectCards.jsx` links to `/project/{project.id}` and `ProjectPage` looks up `ProjectData[id]`. The two arrays are otherwise independent and can drift.
 
@@ -80,6 +80,7 @@ Responsiveness is split across two mechanisms that must be kept in sync manually
 
 ### Loose ends
 
-- `src/resources/` is 63 MB. Two GIFs (`pan-zoom-phone.gif`, `pan-zoom-pc.gif`) are 59.5 MB of that and both render on `/project/0`. Transcoding them to MP4/WebM is the single largest available win; it needs `ffmpeg` and has not been done.
-- `capstone.jpg` is 3500x2334 and renders in a ~250x130 card slot. No responsive images or `srcset` anywhere.
+- Stills are WebP, sized to roughly 2x their rendered dimensions; the two demo recordings are H.264 mp4 played by `SectionMedia`. If you add media, size it to its display box rather than dropping in the original — the repo went from 63 MB to 5.5 MB by doing exactly that. `Pason.png` stays PNG because WebP made that particular palette image six times larger.
+- `vite.config.js` sets `assetsInlineLimit: 0`. Do not raise it: the assets are now small enough that base64-inlining them inflated the ProjectPage chunk from 6.4 to 17.3 kB gzipped.
+- There is still no `srcset` — each image ships one size for every viewport.
 - EmailJS `serviceId` / `templateId` / `publicKey` are inline literals in `EmailFormComponent.jsx` rather than env vars. The public key is meant to be client-visible, but the account cannot be changed without a code edit.

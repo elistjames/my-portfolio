@@ -1,5 +1,6 @@
 .section-image{
     width: 50%;
+    height: auto;
 }
 
 .section-image.main{
@@ -12,10 +13,6 @@
 .section-image.fill{
     width: 60%;
     border-radius: 1.1rem;
-}
-
-.phone-gif{
-    /*transform: rotate(-90deg);*/
 }
 
 .image-container{

@@ -31,3 +31,19 @@ if (!window.ResizeObserver) {
         disconnect() {}
     };
 }
+
+// framer-motion's useInView needs this; jsdom has no layout, so nothing is ever
+// reported as visible.
+if (!window.IntersectionObserver) {
+    window.IntersectionObserver = class {
+        constructor() {
+            this.root = null;
+            this.rootMargin = '';
+            this.thresholds = [];
+        }
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+        takeRecords() { return []; }
+    };
+}

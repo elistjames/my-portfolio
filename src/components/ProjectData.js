@@ -1,20 +1,24 @@
 import pasonLogo from '../resources/Pason.png';
-import capstone from '../resources/capstone.jpg';
-import byteBooks from '../resources/bytebookslogo.png';
-import byteBooksPhone from '../resources/bytebooksphone.png';
-import panZoomPhone from '../resources/pan-zoom-phone.gif';
-import panZoomPc from '../resources/pan-zoom-pc.gif';
-import mysql from '../resources/mysql.png';
-import express from '../resources/expressjs.png';
-import reactLogo from '../resources/reactlogo.png';
-import docker from '../resources/docker.png';
-import MLCartoon from '../resources/ml_cartoon.png';
-import NeuralNetwork from '../resources/neural_network.png';
-import loanIcon from '../resources/loan_icon.png';
-import dataset from '../resources/dataset.png';
-import preprocessing from '../resources/preprocessing.png';
-import results from '../resources/results.png';
-import confusion from '../resources/confusion-matrix.png';
+import capstone from '../resources/capstone.webp';
+import byteBooks from '../resources/bytebookslogo.webp';
+import byteBooksPhone from '../resources/bytebooksphone.webp';
+import panZoomPhone from '../resources/pan-zoom-phone.mp4';
+import panZoomPhonePoster from '../resources/pan-zoom-phone-poster.webp';
+import panZoomPhoneMask from '../resources/pan-zoom-phone-mask.png';
+import panZoomPc from '../resources/pan-zoom-pc.mp4';
+import panZoomPcPoster from '../resources/pan-zoom-pc-poster.webp';
+import panZoomPcMask from '../resources/pan-zoom-pc-mask.png';
+import mysql from '../resources/mysql.webp';
+import express from '../resources/expressjs.webp';
+import reactLogo from '../resources/reactlogo.webp';
+import docker from '../resources/docker.webp';
+import MLCartoon from '../resources/ml_cartoon.webp';
+import NeuralNetwork from '../resources/neural_network.webp';
+import loanIcon from '../resources/loan_icon.webp';
+import dataset from '../resources/dataset.webp';
+import preprocessing from '../resources/preprocessing.webp';
+import results from '../resources/results.webp';
+import confusion from '../resources/confusion-matrix.webp';
 import byteBooksMobile from '../resources/bytebooksmobile.mp4';
 
 
@@ -43,11 +47,15 @@ export const ProjectData = [
                 fit: "cover"
             },
             {
-                data: panZoomPhone,
+                data: panZoomPhonePoster,
+                video: panZoomPhone,
+                mask: panZoomPhoneMask,
                 fit: "contain",
             },
             {
-                data: panZoomPc,
+                data: panZoomPcPoster,
+                video: panZoomPc,
+                mask: panZoomPcMask,
                 fit: "contain",
             }
         ],
