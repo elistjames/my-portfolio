@@ -34,8 +34,13 @@ const ProjectCardComponent = ({id, title, description, images}) => {
     return(
         <motion.div ref={ref} className="card-scroll-transform" style={{transform}}>
             <div className="card-gradient project-card-hover">
-            <Card className="project-card">
-                <Carousel className="card-images">
+            <Card className="project-card" as={Link} to={`/project/${id}`}>
+                {/* No indicators: the whole card is a Link, and the dots are plain
+                    <button>s whose clicks bubble up to it, so tapping one navigated
+                    instead of changing slide. The prev/next arrows are safe — they
+                    are href-less anchors, and @restart/ui calls preventDefault on
+                    those, which makes Link skip navigation. */}
+                <Carousel className="card-images" indicators={false}>
                     {images.map((image, index) => (
                         <Carousel.Item key={index} interval={5000}>
                             <Card.Img className="project-image" src={image.data} alt="Project image"
@@ -49,7 +54,7 @@ const ProjectCardComponent = ({id, title, description, images}) => {
                     <p>{description}</p>
                 </Card.Body>
                 <div className="card-btn-container">
-                    <Button id="card-btn" as={Link} to={`/project/${id}`}>Read more</Button>
+                    <Button id="card-btn">Read more</Button>
                 </div>
             </Card>
             </div>
