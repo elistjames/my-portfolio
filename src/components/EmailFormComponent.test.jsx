@@ -1,16 +1,15 @@
+import {beforeEach, expect, test, vi} from 'vitest';
 import {render, screen, waitFor} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import emailjs from '@emailjs/browser';
 import EmailFormComponent from './EmailFormComponent';
 
-jest.mock('@emailjs/browser', () => ({
-    __esModule: true,
-    default: {send: jest.fn()},
+vi.mock('@emailjs/browser', () => ({
+    default: {send: vi.fn()},
 }));
 
-// CRA's jest config sets resetMocks:true, which strips the implementation before
-// every test, so the resolved value has to be re-attached here rather than above.
 beforeEach(() => {
+    emailjs.send.mockReset();
     emailjs.send.mockResolvedValue({status: 200});
 });
 

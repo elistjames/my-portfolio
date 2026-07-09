@@ -1,5 +1,3 @@
-@import "../index.css";
-
 /* The card grows on hover via a compositor-only scale. Sizing below stays static
    so hovering one card never reflows its siblings in the horizontal scroller. */
 .card-scroll-transform{
