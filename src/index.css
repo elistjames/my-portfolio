@@ -66,13 +66,11 @@ code {
 ::-webkit-scrollbar {
   height: 5px;
   width: 5px;
-  backdrop-filter: blur(10px);
   -webkit-border-radius: 1ex;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--white);
-  backdrop-filter: blur(10px);
   -webkit-border-radius: 1ex;
 }
 
@@ -104,6 +102,9 @@ code {
   background-image: url(resources/dark-background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  /* Parallaxed every scroll frame; keep it on its own layer so the backdrop-filter
+     elements above it never force a repaint of the full-viewport image. */
+  will-change: transform;
 }
 
 /**/
@@ -202,7 +203,6 @@ section .header.landing{
   width: 100%;
   min-height: 1000px;
   justify-content: center;
-  transition: 400ms;
 }
 
 .web-title{
@@ -269,7 +269,7 @@ section .header.landing{
   border: none;
   border-radius: 1.1rem;
   box-shadow: inset 0 0 0 0 var(--purple), inset 0 0 0 0 var(--blue);
-  transition: ease-out 0.3s;
+  transition: background 0.3s ease-out, box-shadow 0.3s ease-out, color 0.3s ease-out;
   outline: none;
 }
 
@@ -305,23 +305,27 @@ section .header.landing{
   background: none;
 }
 
+/* visibility:hidden when closed keeps a full-viewport backdrop-filter layer out
+   of the compositor, and keeps its buttons out of the tab order. */
 .toolbar{
   color: var(--white);
   position: fixed;
   z-index: 500;
   top: -100%;
   left:0;
+  visibility: hidden;
   backdrop-filter: blur(10px);
   background: var(--translucentBlack);
   width: 100%;
   height: 100%;
   box-shadow: 2px 0 8px black;
-  transition: ease-in 350ms;
+  transition: top 350ms ease-in, visibility 0s linear 350ms;
 }
 
 .toolbar.active{
   top: var(--navHeight);
-  transition: ease-out 350ms;
+  visibility: visible;
+  transition: top 350ms ease-out, visibility 0s;
 }
 
 .tool-bar-container{
@@ -377,7 +381,7 @@ section .header.landing{
   justify-content: center;
   align-items: center;
   box-shadow: inset 0 0 0 0 var(--purple), inset 0 0 0 0 var(--blue);
-  transition: ease-out 0.3s;
+  transition: right 0.3s ease-out, background 0.3s ease-out, box-shadow 0.3s ease-out, color 0.3s ease-out;
   outline: none;
 }
 
@@ -400,7 +404,7 @@ section .header.landing{
 
 .to-top-btn.hidden {
   right: -4rem;
-  transition: ease-out 0.3s;
+  pointer-events: none;
 }
 
 @media (min-width: 641px) and (max-width: 835px) {
@@ -476,5 +480,18 @@ section .header.landing{
 
   section .header{
     font-size: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .background-texture {
+    will-change: auto;
   }
 }

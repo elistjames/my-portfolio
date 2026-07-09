@@ -1,70 +1,57 @@
-import './App.css';
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import NavBarComponent from "./components/NavBarComponent";
 import LandingPage from "./pages/LandingPage";
 import ToolBarComponent from "./components/ToolBarComponent";
-import React, {useEffect, useRef, useState} from "react";
-import ProjectPage from "./pages/ProjectPage";
-import {useScroll, useTransform} from "framer-motion";
-import { motion } from "framer-motion";
+import React, {lazy, Suspense, useCallback, useEffect, useState} from "react";
+import {motion, useScroll, useTransform} from "framer-motion";
 import { BsChevronUp } from "react-icons/bs";
 
-
-function useParallax(value, distance1, distance2) {
-    return useTransform(value, [0, 1], [distance1, distance2]);
-}
+const ProjectPage = lazy(() => import("./pages/ProjectPage"));
 
 function App() {
     const [toolBarActive, setToolBarActive] = useState(false);
-    const [landingSection, setLandingSection] = useState("landing-title");
-    const [tempLandingSection, setTempLandingSection] = useState("landing-title");
+    const [scrollTarget, setScrollTarget] = useState(null);
     const [atTop, setAtTop] = useState(true);
-    const background = useRef();
 
     const {scrollYProgress} = useScroll();
-    const y = useParallax(scrollYProgress, 0, -150);
-
-    React.useEffect(() => {
-        window.onscroll = () => {
-            setAtTop(window.scrollY <= 10);
-        }
-
-
-        return () => (window.onscroll = null);
-    });
+    const y = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
     useEffect(() => {
-        setLandingSection(tempLandingSection);
-        setTempLandingSection(tempLandingSection);
-    }, [landingSection]);
+        const onScroll = () => setAtTop(window.scrollY <= 10);
+        onScroll();
+        window.addEventListener("scroll", onScroll, {passive: true});
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
-    const handleLandingNavigate = (section) =>{
+    // The nonce lets the landing page re-scroll to a section it is already
+    // sitting on, which a bare section string could not express.
+    const handleLandingNavigate = useCallback((section) => {
         setToolBarActive(false);
-        setTempLandingSection(section);
-        setLandingSection("sup");
-    }
+        setScrollTarget((prev) => ({section, nonce: (prev?.nonce ?? 0) + 1}));
+    }, []);
 
     const handleToolBarToggle = () =>{
-      setToolBarActive(!toolBarActive);
+      setToolBarActive((active) => !active);
     }
 
     return (
       <div className="app-wrapper">
-          <motion.div ref={background} className="background-texture" style={{translateY: y}}>
-
-          </motion.div>
-          <button id="to-top" className={atTop ? "to-top-btn blur hidden" : "to-top-btn blur"} onClick={() => {window.scrollTo(0, 0)}}>
+          <motion.div className="background-texture" style={{y}}/>
+          <button id="to-top" className={atTop ? "to-top-btn blur hidden" : "to-top-btn blur"}
+                  aria-label="Back to top" onClick={() => {window.scrollTo(0, 0)}}>
               <BsChevronUp size={40} className="post-mobile"/>
           </button>
           <Router>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
               <ToolBarComponent expanded={toolBarActive} handleLandingNavigate={handleLandingNavigate}></ToolBarComponent>
               <div className="viewport">
-                  <Routes>
-                      <Route path='/:section' element={<LandingPage landingSection={landingSection} handleLandingNavigate={handleLandingNavigate}/>}/>
-                      <Route path="/project/:id" element={<ProjectPage/>}/>
-                      <Route path="/" element={<Navigate to="/landing-title"/>}/>
-                  </Routes>
+                  <Suspense fallback={null}>
+                      <Routes>
+                          <Route path='/:section' element={<LandingPage scrollTarget={scrollTarget}/>}/>
+                          <Route path="/project/:id" element={<ProjectPage/>}/>
+                          <Route path="/" element={<Navigate to="/landing-title" replace/>}/>
+                      </Routes>
+                  </Suspense>
               </div>
           </Router>
       </div>

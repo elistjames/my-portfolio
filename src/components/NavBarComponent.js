@@ -3,24 +3,23 @@ import {Button, OverlayTrigger, Tooltip} from "react-bootstrap";
 import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { BsList } from "react-icons/bs";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
 
 
 const NavBarComponent = ({toggleToolBar, handleLandingNavigate}) =>{
     const currentRoute = useLocation();
+    const navigate = useNavigate();
 
 
     const isMobile = useMediaQuery({
         query: '(max-width: 640px)'
     });
 
-    const handleNavigate = async (section) => {
-        if (currentRoute.pathname !== "/" && currentRoute.pathname !== "/landing-title" && currentRoute.pathname !== "/about-me" && currentRoute.pathname !== "/landing-projects" && currentRoute.pathname !== "/lets-connect") {
-            window.location.assign(`/${section}`);
-        }
-        else{
-            handleLandingNavigate(section);
+    const handleNavigate = (section) => {
+        handleLandingNavigate(section);
+        if (currentRoute.pathname.startsWith("/project")) {
+            navigate(`/${section}`);
         }
     }
 

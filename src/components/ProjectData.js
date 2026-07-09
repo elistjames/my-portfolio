@@ -29,58 +29,6 @@ export const SectionType = {
     pointGrid: "pointGrid",
 }
 
-export const LandingPageProjects = [
-    {
-        id: 0,
-        title: 'Pason Live Mobile',
-        description: 'Modified a large scale desktop app to be have complex mobile capabilities. Placed 2nd in capstone design fair',
-        images: [
-            {
-                data: pasonLogo,
-                fit: "cover"
-            },
-            {
-                data: capstone,
-                fit: "cover"
-            }
-        ]
-    },
-    {
-        id: 1,
-        title: 'Byte Books',
-        description: 'A mobile app that helps people with short attentions spans to read more',
-        images: [
-            {
-                data: byteBooksPhone,
-                fit: "contain"
-            },
-            {
-                data: byteBooks,
-                fit: "contain"
-            },
-        ]
-    },
-    {
-        id: 2,
-        title: 'Bank Loan Predictor',
-        description: 'A machine learning model that can give a prediction weather to approve a bank loan request or not',
-        images: [
-            {
-                data: MLCartoon,
-                fit: "contain"
-            },
-            {
-                data: NeuralNetwork,
-                fit: "contain"
-            },
-            {
-                data: loanIcon,
-                fit: "contain"
-            }
-        ]
-    },
-]
-
 export const ProjectData = [
     {
         id: 0,

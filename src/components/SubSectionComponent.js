@@ -30,7 +30,8 @@ const SubSectionComponent = ({subsection}) => {
                     <motion.div className="subsection-container" initial={{width: "auto"}}>
                         <div className="subsection-image-container">
                             <img className="subsection-image" src={subsection.image.data}
-                                 style={{objectFit: subsection.image.fit}} alt="subsection image"/>
+                                 width={96} height={96} loading="lazy" decoding="async"
+                                 style={{objectFit: subsection.image.fit}} alt=""/>
                         </div>
                         <motion.div className={showDetails ? "subsection-details" : "subsection-details outside"}>
                             <div className="subsection-details-header">
@@ -47,7 +48,8 @@ const SubSectionComponent = ({subsection}) => {
                         <div className="mobile-subsection-header">
                             <div className="subsection-image-container">
                                 <img className="subsection-image" src={subsection.image.data}
-                                     style={{objectFit: subsection.image.fit}} alt="subsection image"/>
+                                     width={96} height={96} loading="lazy" decoding="async"
+                                     style={{objectFit: subsection.image.fit}} alt=""/>
                             </div>
                             <div className="subsection-details-header mobile">
                                 {subsection.header}

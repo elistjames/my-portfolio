@@ -1,22 +1,20 @@
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {NavData} from "./NavData";
 import {useMediaQuery} from "react-responsive";
 
 const ToolBarComponent = ({expanded, handleLandingNavigate}) =>{
 
     const currentRoute = useLocation();
+    const navigate = useNavigate();
 
     const isMobile = useMediaQuery({
         query: '(max-width: 640px)'
     });
 
-    const handleNavigate = async (section) => {
-
-        if (currentRoute.pathname !== "/" && currentRoute.pathname !== "/landing-title" && currentRoute.pathname !== "/about-me" && currentRoute.pathname !== "/landing-projects") {
-            window.location.assign(`/${section}`);
-        }
-        else{
-            handleLandingNavigate(section);
+    const handleNavigate = (section) => {
+        handleLandingNavigate(section);
+        if (currentRoute.pathname.startsWith("/project")) {
+            navigate(`/${section}`);
         }
     }
 

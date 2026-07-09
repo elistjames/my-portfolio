@@ -1,33 +1,32 @@
 @import "../index.css";
 
+/* The card grows on hover via a compositor-only scale. Sizing below stays static
+   so hovering one card never reflows its siblings in the horizontal scroller. */
+.card-scroll-transform{
+    width: fit-content;
+    height: fit-content;
+}
+
+.project-card-hover{
+    transition: transform 0.3s ease-out;
+}
+
+@media (hover: hover) {
+    .project-card-hover:hover{
+        transform: scale(1.1);
+    }
+}
+
 .project-card{
     background: var(--darkerBlue);
     width: 250px;
     height: 350px;
     border-radius: 1.1rem;
     color: var(--white);
-    transition: 0.3s;
-}
-
-.project-card:hover{
-    width: 275px;
-    height: 385px;
-    transition: 0.3s;
 }
 
 .card-title{
     font-size: 20px;
-    transition: 0.3s;
-}
-
-.project-card:hover .card-title{
-    font-size: 22px;
-    transition: 0.3s;
-}
-
-.project-card:hover p{
-    font-size: 16.5px;
-    transition: 0.3s;
 }
 
 .project-card p{
@@ -35,32 +34,18 @@
     font-size: 15px;
     font-weight: lighter;
     margin: 0;
-    transition: 0.3s;
 }
 
 .card-images{
     width: 100%;
     height: 130px;
-    /*border: 1px solid white;*/
     border-radius: 1.1rem 1.1rem 0 0;
-    transition: 0.3s;
 }
 
 .project-image{
     width: 100%;
     height: 130px;
     border-radius: 1.1rem 1.1rem 0 0;
-    transition: 0.3s;
-}
-
-.project-card:hover .card-images{
-    height: 143px;
-    transition: 0.3s;
-}
-
-.project-card:hover .project-image{
-    height: 143px;
-    transition: 0.3s;
 }
 
 .card-btn-container{
@@ -79,13 +64,12 @@
     border-radius: 1.1rem;
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
     font-size: 14px;
-    transition: 0.3s;
+    text-decoration: none;
+    transition: width 0.3s;
 }
 
 .project-card:hover #card-btn{
-    font-size: 17.6px;
     width: 100%;
-    transition: 0.3s;
 }
 
 #card-btn:hover{

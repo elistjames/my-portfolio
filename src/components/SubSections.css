@@ -13,6 +13,8 @@
     margin: 0 0 0 0;
 }
 
+/* Width here is driven by framer-motion (SubSectionComponent); a CSS
+   `transition: all` on the same property fights that animation. */
 .subsection-container{
     background: var(--darkerBlue);
     padding:0.5rem 0.5rem 0.5rem 0.5rem;
@@ -20,7 +22,6 @@
     width: auto;
     height: auto;
     border-radius: 60px;
-    transition: all 0.3s ease;
 }
 
 .subsection-container.mobile{

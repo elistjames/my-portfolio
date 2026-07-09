@@ -1,11 +1,8 @@
 import "./ProjectCard.css";
 import {Button, Card, Carousel} from "react-bootstrap";
 import {useRef} from "react";
+import {Link} from "react-router-dom";
 import {motion, useMotionTemplate, useScroll, useSpring, useTransform, useVelocity} from "framer-motion";
-
-function useParallax(value, distance1, distance2) {
-    return useTransform(value, [0, 1], [distance1, distance2]);
-}
 
 const ProjectCardComponent = ({id, title, description, images}) => {
 
@@ -16,7 +13,7 @@ const ProjectCardComponent = ({id, title, description, images}) => {
         offset: ["start 0.8", "end end"]
     });
 
-    const x = useParallax(scrollYProgress, 100, 0);
+    const x = useTransform(scrollYProgress, [0, 1], [100, 0]);
     const scrollVelocity = useVelocity(scrollYProgress);
     const smoothVelocity = useSpring(scrollVelocity, {
         damping: 50,
@@ -31,13 +28,19 @@ const ProjectCardComponent = ({id, title, description, images}) => {
 
     const transform = useMotionTemplate`translateX(${moveX}vw) rotate(${rotate}deg)`;
 
+    // The scroll transform and the hover transform live on separate elements:
+    // framer-motion owns the outer inline transform, CSS owns the inner hover
+    // scale. Both stay on the compositor, and hover costs no JS.
     return(
-        <motion.div ref={ref} className="card-gradient" style={{transform: transform}}>
+        <motion.div ref={ref} className="card-scroll-transform" style={{transform}}>
+            <div className="card-gradient project-card-hover">
             <Card className="project-card">
                 <Carousel className="card-images">
                     {images.map((image, index) => (
                         <Carousel.Item key={index} interval={5000}>
-                            <Card.Img className="project-image" src={image.data} alt="Project image" style={{objectFit: image.fit}}/>
+                            <Card.Img className="project-image" src={image.data} alt="Project image"
+                                      width={250} height={130} loading="lazy" decoding="async"
+                                      style={{objectFit: image.fit}}/>
                         </Carousel.Item>
                     ))}
                 </Carousel>
@@ -46,9 +49,10 @@ const ProjectCardComponent = ({id, title, description, images}) => {
                     <p>{description}</p>
                 </Card.Body>
                 <div className="card-btn-container">
-                    <Button id="card-btn" href={`project/${id}`}>Read more</Button>
+                    <Button id="card-btn" as={Link} to={`/project/${id}`}>Read more</Button>
                 </div>
             </Card>
+            </div>
         </motion.div>
 
     );
