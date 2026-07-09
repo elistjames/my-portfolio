@@ -1,5 +1,3 @@
-@import '../index.css';
-
 .emailForm{
     display: flex;
     flex-direction: column;

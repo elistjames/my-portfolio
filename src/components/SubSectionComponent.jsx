@@ -1,27 +1,29 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import './SubSections.css';
 import {motion, useAnimate, useInView} from "framer-motion";
 import {useMediaQuery} from "react-responsive";
 
 const SubSectionComponent = ({subsection}) => {
-    const [showDetails, setShowDetails] = useState(false);
 
     const isMobile = useMediaQuery({
         query: '(max-width: 400px)'
     });
 
     const [scope, animate] = useAnimate()
-    const isInView = useInView(scope, {
+
+    // `once` latches this to true on first entry, which is what the old
+    // setShowDetails(true)-inside-an-effect was emulating. Deriving the flag
+    // instead of storing it avoids the cascading render that caused.
+    const showDetails = useInView(scope, {
+        once: true,
         margin: "-40% 0% -40% 0%"
     });
 
     useEffect(() => {
-        if(isInView){
+        if(showDetails){
             animate(scope.current, {width: "100%"}, {duration: 0.3});
-            setShowDetails(true);
-            //animate(".subsection-details", {opacity: 1}, {delay: 0.3});
         }
-    }, [animate, isInView, scope])
+    }, [animate, showDetails, scope])
 
     return(
         <div className="subsection-wrapper">
