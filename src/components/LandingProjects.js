@@ -5,11 +5,31 @@ import byteBooksPhone from '../resources/bytebooksphone.webp';
 import MLCartoon from '../resources/ml_cartoon.webp';
 import NeuralNetwork from '../resources/neural_network.webp';
 import loanIcon from '../resources/loan_icon.webp';
+import cofiLogo from '../resources/cofi-logo.svg';
+import cofiIcon from '../resources/cofi-icon.webp';
 
 // Card summaries only. Kept apart from ProjectData so the landing page does not
-// pull the full per-project page content into its chunk. The ids here must stay
-// aligned with the array positions in ProjectData.
+// pull the full per-project page content into its chunk.
+//
+// This array's order is the order the cards appear in — newest first. Each `id`
+// must match that project's position in the ProjectData array, which is what
+// ProjectPage indexes into. The two orderings are independent on purpose.
 export const LandingPageProjects = [
+    {
+        id: 3,
+        title: 'cofi.ai',
+        description: 'Two years at an early-stage fintech startup, building an AI SaaS platform for private-equity firms',
+        images: [
+            {
+                data: cofiLogo,
+                fit: "contain"
+            },
+            {
+                data: cofiIcon,
+                fit: "cover"
+            }
+        ]
+    },
     {
         id: 0,
         title: 'Pason Live Mobile',
