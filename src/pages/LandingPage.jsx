@@ -17,7 +17,7 @@ const LandingPage = ({scrollTarget}) =>{
 
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
-    const abstractText = "Software Engineering,|,Full Stack Development,|,Machine Learning";
+    const abstractText = "Software Engineering,|,Full Stack Development,|,Product Management";
 
     const scrollToSection = useCallback((id, behavior) => {
         const sectionElement = document.getElementById(id);
@@ -91,17 +91,25 @@ const LandingPage = ({scrollTarget}) =>{
                             </AnimateContainer>
                             <AnimateContainer>
                                 <div className="blur-container landing">
-                                    <p style={{fontSize:"18px"}}>I am 24 year old software engineering graduate from the University of Calgary,
-                                        with a strong passion for app development. Crafting dynamic web apps and pages using
-                                        frameworks like React and Angular is where my creative side shines, this website will showcase that. But my skills don't
-                                        stop there; I like to explore the world of machine learning and DevOps then use
-                                        that knowledge to solve complex problems and streamline processes. In terms of my personal characteristics, my self-motivation and persistence
-                                        have allowed me to stick with problems and maintain productivity over long projects, inevitably reaching my goals and deadlines.
-                                        Having been exposed to many collaborative environments throughout my life like team sports and past jobs, I have honed
-                                        the ability to optimize workflow and relationships when working on a team with ease.
-                                        In my spare time I like to fish, play hockey, and if I'm bored, see if I can think of the next big app idea.
-                                        With the constant growth and innovation in software, I'm always seeking new challenges
-                                        and opportunities to learn and grow in this ever-evolving field.</p>
+                                    <p style={{fontSize:"18px"}}>I'm a full-stack software engineer and a software engineering graduate of
+                                        the University of Calgary. For the last two years I was at cofi.ai, an early-stage fintech startup building an
+                                        AI SaaS platform for private-equity firms. I joined on the frontend and grew into owning features end to end,
+                                        scoping them with customer stakeholders, building them across the stack, and shipping them to production.
+                                    </p>
+                                    <br/>
+                                    <p style={{fontSize:"18px"}}>I was the primary author of the product's full frontend rebuild in Vue 3, Nuxt and
+                                        TypeScript, along with its design-system component library, and I built its most complex features: an AI chat
+                                        assistant, interactive dashboards, and spreadsheet-style data grids that clients used every day. On the backend
+                                        I wired up third-party data integrations with Nango and built data-transformation and workflow pipelines. Over
+                                        the past year I planned and shipped large features independently using agentic development tools like Claude Code,
+                                        with automated review gates in CI.
+                                    </p>
+                                    <br/>
+                                    <p style={{fontSize:"18px"}}>Working at a startup taught me to move fast, own what I ship, and pay attention to why
+                                        a feature matters to the business, not just how it's built. In my spare time I fish, play hockey, and if I'm bored,
+                                        see if I can think of the next big app idea. I'm looking for my next full-stack or product engineering role on a
+                                        team that ships and cares about craft, and I'm open to remote and Toronto-area work.
+                                    </p>
                                 </div>
                             </AnimateContainer>
                         </div>
