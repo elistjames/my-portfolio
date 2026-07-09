@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useRef} from 'react';
 import './LandingPage.css';
 import {motion, stagger, useAnimate} from "framer-motion"
 
@@ -7,42 +7,48 @@ import EmailFormComponent from "../components/EmailFormComponent";
 import ProjectCards from "../components/ProjectCards";
 import AnimateContainer from "../components/AnimateContainer";
 
-const LandingPage = ({landingSection}) =>{
+const LandingPage = ({scrollTarget}) =>{
 
-    let {section} = useParams();
+    const {section} = useParams();
 
     const [scope, animate] = useAnimate();
+    const mounted = useRef(false);
 
 
     const codeIntro1= "> Hello World!"
     const codeIntro2= "> I am:"
     const abstractText = "Software Engineering,|,Full Stack Development,|,Machine Learning";
 
+    const scrollToSection = useCallback((id) => {
+        const sectionElement = document.getElementById(id);
+        if (!sectionElement) return;
+        sectionElement.scrollIntoView({block: "center", behavior: "smooth"});
+    }, []);
+
+    // The URL owns the scroll position on mount and on route change.
     useEffect(() => {
-        landingSection = section;
-        const sectionElement = document.getElementById(section);
-        sectionElement.scrollIntoView({ block: landingSection === "landing-title" ? "center" : "center", behavior: "smooth" });
+        scrollToSection(section);
+    }, [section, scrollToSection]);
 
+    // Nav clicks scroll without changing the route. Skipping the first run keeps
+    // a stale target from fighting the URL-driven scroll above on mount.
+    useEffect(() => {
+        if (!mounted.current) {
+            mounted.current = true;
+            return;
+        }
+        if (!scrollTarget) return;
+        scrollToSection(scrollTarget.section);
+    }, [scrollTarget, scrollToSection]);
 
-        const sequence = [
+    useEffect(() => {
+        animate([
             [".code-intro1 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: 0})}],
             [".code-intro2 span", { opacity: 1 }, {delay: stagger(0.04, {startDelay: -0.2})}],
             [".title", {opacity: 1, x: "0px"}, {duration: 0.5}, {ease: "easeOut"}],
             [".abstract span", {opacity: 1, x: "0px"}, {delay: stagger(0.1, {startDelay: -0.3, ease: "easeOut"})}]
-
-        ]
-        animate(sequence);
-
-    }, [section]);
-
-
-
-    useEffect(() => {
-
-        if(landingSection === "sup") return;
-        const sectionElement = document.getElementById(landingSection);
-        sectionElement.scrollIntoView({ block: landingSection === "landing-title" ? "center" : "center", behavior: "smooth"});
-    }, [landingSection]);
+        ]);
+    }, [animate]);
 
     return (
         <>
