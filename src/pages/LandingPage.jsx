@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import EmailFormComponent from "../components/EmailFormComponent";
 import ProjectCards from "../components/ProjectCards";
 import AnimateContainer from "../components/AnimateContainer";
+import PracticeComponent from '../components/PracticeComponent';
 
 const LandingPage = ({scrollTarget}) =>{
 
@@ -90,6 +91,7 @@ const LandingPage = ({scrollTarget}) =>{
                                 </div>
                             </AnimateContainer>
                             <AnimateContainer>
+                                <PracticeComponent/>
                                 <div className="blur-container landing">
                                     <p style={{fontSize:"18px"}}>I'm a full-stack software engineer and a software engineering graduate of
                                         the University of Calgary. For the last two years I was at cofi.ai, an early-stage fintech startup building an
