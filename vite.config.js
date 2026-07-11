@@ -1,7 +1,12 @@
 import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({command}) => ({
+    // Deployed as a GitHub Pages project site at
+    // https://elistjames.github.io/my-portfolio/, so production asset URLs need
+    // that prefix. Dev and preview stay at the root. (Change to '/' if this ever
+    // moves to a custom domain or a user/org Pages site.)
+    base: command === 'build' ? '/my-portfolio/' : '/',
     plugins: [react()],
     server: {
         port: 3000,
@@ -25,4 +30,4 @@ export default defineConfig({
         setupFiles: './src/setupTests.js',
         css: false,
     },
-})
+}))

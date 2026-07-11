@@ -9,6 +9,11 @@ import {useScrollAtTop} from "./hooks/useScrollAtTop";
 
 const ProjectPage = lazy(() => import("./pages/ProjectPage"));
 
+// On GitHub Pages the site is served under /my-portfolio/, so the router has to
+// scope its paths to that prefix. Vite exposes it as BASE_URL ('/' in dev), and
+// react-router wants no trailing slash.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
 function App() {
     const [toolBarActive, setToolBarActive] = useState(false);
     const [scrollTarget, setScrollTarget] = useState(null);
@@ -35,7 +40,7 @@ function App() {
                   aria-label="Back to top" onClick={() => {window.scrollTo(0, 0)}}>
               <BsChevronUp size={40} className="post-mobile"/>
           </button>
-          <Router>
+          <Router basename={basename}>
               <NavBarComponent toggleToolBar={handleToolBarToggle} handleLandingNavigate={handleLandingNavigate}/>
               <ToolBarComponent expanded={toolBarActive} handleLandingNavigate={handleLandingNavigate}></ToolBarComponent>
               <div className="viewport">
