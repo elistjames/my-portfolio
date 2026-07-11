@@ -1,0 +1,157 @@
+.ba-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 0 2rem;
+}
+
+.ba{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ba-head{
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.ba-num{
+    font-family: "Kode Mono", monospace;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1;
+    color: var(--blue);
+}
+
+.ba-title{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--white);
+    margin: 0;
+}
+
+.ba-desc{
+    font-family: "Poppins", sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--grey);
+    margin: 0;
+    max-width: 74ch;
+}
+
+.ba-desc strong{
+    color: var(--white);
+    font-weight: 600;
+}
+
+.ba-stage{
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--ba-aspect, 16 / 9);
+    border-radius: 12px;
+    overflow: hidden;
+    user-select: none;
+    /* Horizontal drag is ours; a vertical swipe still scrolls the page (the
+       browser then fires pointercancel and the drag ends). */
+    touch-action: pan-y;
+    cursor: ew-resize;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    background: #0d0b14;
+}
+
+.ba-stage:focus-visible{
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.ba-img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ba-after-pane{
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    clip-path: inset(0 0 0 var(--x, 50%));
+}
+
+.ba-divider{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--x, 50%);
+    width: 2px;
+    background: linear-gradient(var(--purple), var(--blue));
+    z-index: 5;
+    transform: translateX(-1px);
+}
+
+.ba-knob{
+    position: absolute;
+    top: 50%;
+    left: var(--x, 50%);
+    z-index: 6;
+    width: 38px;
+    height: 38px;
+    margin: -19px 0 0 -19px;
+    border-radius: 50%;
+    background: var(--darkerBlue);
+    border: 2px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+    /* The stage owns the drag; let pointer events fall through the knob. */
+    pointer-events: none;
+}
+
+.ba-knob svg{
+    width: 18px;
+    height: 18px;
+    stroke: var(--white);
+}
+
+.ba-tag{
+    position: absolute;
+    z-index: 7;
+    font-family: "Kode Mono", monospace;
+    font-weight: 600;
+    font-size: 10.5px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    padding: 5px 9px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.ba-tag-before{
+    left: 12px;
+    bottom: 12px;
+    background: rgba(248, 250, 252, 0.9);
+    color: #334155;
+}
+
+.ba-tag-after{
+    right: 12px;
+    top: 12px;
+    background: rgba(94, 0, 255, 0.85);
+    color: var(--white);
+}
+
+@media (max-width: 583px) {
+    .ba-wrap{
+        padding: 0;
+    }
+}

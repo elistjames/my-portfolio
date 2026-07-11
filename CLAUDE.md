@@ -21,7 +21,7 @@ npm run lint           # eslint flat config
 
 Vite does not lint during `dev` or `build` the way `react-scripts` did — `npm run lint` is a separate step, so a lint error will not fail a build.
 
-Files containing JSX must use the `.jsx` extension; Vite's esbuild transform will not parse JSX out of a `.js` file. `ProjectData.js`, `LandingProjects.js`, and `setupTests.js` are plain `.js` because they contain none. `package.json` sets `"type": "module"`.
+Files containing JSX must use the `.jsx` extension; Vite's esbuild transform will not parse JSX out of a `.js` file. `LandingProjects.js` and `setupTests.js` are plain `.js` because they contain none. `ProjectData.jsx` is `.jsx`: its section content includes JSX (rich-text paragraphs with `<strong>`/`<em>`/links, and `react-icons` components passed as data). `package.json` sets `"type": "module"`.
 
 Tests are Vitest with `globals: true` (configured in `vite.config.js`), so `describe`/`test`/`expect` need no import, but `vi` does. Unlike CRA's Jest preset, there is no automatic mock reset and no automatic RTL cleanup — `src/setupTests.js` registers `cleanup()` in an `afterEach`, and mocks reset explicitly in `beforeEach`.
 
@@ -40,12 +40,12 @@ So the landing page is one long scrolling document, and the URL segment selects 
 - `LandingPage.jsx` guards `document.getElementById(section)` before scrolling, so an unknown `/:section` path renders the landing page rather than throwing.
 - `NavBarComponent` and `ToolBarComponent` scroll when already on the landing page and call `navigate()` when on a project page. `App` passes them a `handleLandingNavigate` that carries an incrementing nonce, so re-selecting the section you are already on still re-triggers the scroll. `LandingPage` skips its nonce-driven effect on first mount, letting the URL own the initial scroll position.
 
-### Content lives in `components/ProjectData.js` and `components/LandingProjects.js`
+### Content lives in `components/ProjectData.jsx` and `components/LandingProjects.js`
 
 These are the source of truth for every project:
 
 - `LandingProjects.js` exports `LandingPageProjects` — the summary cards on the landing page
-- `ProjectData.js` exports `SectionType` (a string enum: `main`, `basic`, `multiParagraph`, `image`, `video`, `paragraphImage`, `subsections`, `pointGrid`) and `ProjectData` — the full per-project pages
+- `ProjectData.jsx` exports `SectionType` (a string enum: `main`, `mainImage`, `heroTerminal`, `basic`, `multiParagraph`, `image`, `video`, `paragraphImage`, `subsections`, `pointGrid`, `statBand`, `beforeAfter`, `cta`) and `ProjectData` — the full per-project pages. Several types read optional fields the older ones don't (`basic` takes `variant: 'callout'` or an `index` kicker; `multiParagraph` takes an `index`; `video` takes `framed`/`caption`; `pointGrid` points take an `icon`), and each renders through its `case` in `ProjectPage.jsx`
 
 They are deliberately separate modules. `ProjectPage` is lazy-loaded via `React.lazy`, so keeping the heavy per-project content out of `LandingProjects.js` keeps it out of the main chunk — importing `ProjectData` from the landing page would undo the code split.
 

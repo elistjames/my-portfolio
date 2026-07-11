@@ -88,6 +88,22 @@ code {
   width: fit-content;
 }
 
+/* Let a gradient card fill its container (a grid cell, a flex column, a full-
+   width block) instead of shrinking to its content. */
+.card-gradient.fill {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* The dark interior panel that sits inside a .card-gradient border. Its radius
+   is the outer radius minus the 4px gradient padding. */
+.card-gradient-inner {
+  background: var(--darkerBlue);
+  border-radius: calc(1.2rem - 4px);
+  height: 100%;
+}
+
 .app-wrapper {
   background-image: var(--darkerBlue);
   display: flex;

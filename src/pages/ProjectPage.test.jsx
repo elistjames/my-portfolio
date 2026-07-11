@@ -55,6 +55,30 @@ test('every project page names itself, in text or in alt text', () => {
     });
 });
 
+test('renders the cofi.ai page across its new section types', () => {
+    renderAt('/project/3');
+
+    // heroTerminal title, statBand tile, multiParagraph header
+    expect(screen.getByRole('heading', {name: 'cofi.ai'})).toBeInTheDocument();
+    expect(screen.getByText('324')).toBeInTheDocument();
+    expect(screen.getByText('Overview')).toBeInTheDocument();
+    // numbered multiParagraph and the basic callout render as sub-headings
+    expect(screen.getByRole('heading', {name: 'Tali — the AI copilot'})).toBeInTheDocument();
+    expect(screen.getByRole('heading', {name: 'Two real-time collaborative surfaces'})).toBeInTheDocument();
+    // pointGrid header
+    expect(screen.getByText('Experience I gained')).toBeInTheDocument();
+
+    // beforeAfter renders one draggable slider per comparison
+    expect(screen.getAllByRole('slider')).toHaveLength(2);
+
+    // hero action jumps to an in-page anchor; cta actions go out to the profiles
+    expect(screen.getByRole('link', {name: 'What I built'})).toHaveAttribute('href', '#build');
+    expect(screen.getByRole('link', {name: 'View my GitHub'}))
+        .toHaveAttribute('href', 'https://github.com/elistjames');
+    expect(screen.getByRole('link', {name: 'Connect on LinkedIn'}))
+        .toHaveAttribute('href', 'https://www.linkedin.com/in/eli-stjames/');
+});
+
 test('resets the scroll position again when switching between projects', () => {
     const {unmount} = renderAt('/project/0');
     unmount();

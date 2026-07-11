@@ -25,3 +25,41 @@
 
     padding:0;
 }
+
+/* Icon variant: wider auto-fit tiles that grow with their copy, instead of the
+   fixed 200×200 squares. Gap replaces the per-card margin. */
+.points-flex-container.has-icons{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.4rem;
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+}
+
+.card-gradient.icon-tile{
+    width: auto;
+    height: auto;
+}
+
+.point-card.icon-tile{
+    width: auto;
+    height: 100%;
+    text-align: left;
+    padding: 0.4rem;
+}
+
+.point-icon{
+    font-size: 26px;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+}
+
+.point-card.icon-tile #card-title{
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.point-card.icon-tile p{
+    line-height: 1.55;
+    color: var(--grey);
+}

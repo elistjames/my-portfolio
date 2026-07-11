@@ -83,3 +83,355 @@
         margin-top: 1rem;
     }
 }
+
+/* ==========================================================================
+   Section types layered on the shared render switch. Each treatment below is
+   named for its section TYPE, not any one project — every project's data may
+   use them. They lean on the global gradient-border primitive (.card-gradient
+   / .card-gradient-inner) and the frosted panel (.blur-container).
+   ========================================================================== */
+
+/* Anchored sections (from action links like #build) clear the fixed nav on jump. */
+section[id]{
+    scroll-margin-top: calc(var(--navHeight) + 1rem);
+}
+
+/* ---- Action buttons (hero + cta) ---- */
+.actions{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.actions-center{
+    justify-content: center;
+}
+
+.action-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.3rem;
+    border-radius: 1.1rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: var(--white);
+    text-decoration: none;
+    background-image: linear-gradient(to right, var(--purple), var(--lighterBlue));
+    border: 2px solid transparent;
+    transition: box-shadow 0.3s ease-out, background 0.3s ease-out;
+}
+
+.action-btn.outline{
+    background: none;
+    border: 2px solid var(--white);
+}
+
+@media (hover: hover) {
+    .action-btn:hover{
+        box-shadow: inset 60px 0 40px 0 var(--purple), inset 160px 0 30px 0 var(--blue);
+    }
+
+    .action-btn.outline:hover{
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: none;
+    }
+}
+
+/* Inline links inside body copy. */
+.inline-link{
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.inline-link:hover{
+    text-decoration: underline;
+}
+
+/* ---- heroTerminal ---- */
+.hero-terminal{
+    min-height: 90vh;
+    align-items: center;
+    margin-top: -1rem;
+}
+
+.hero-terminal-grid{
+    display: flex;
+    gap: 3.5rem;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.hero-terminal-copy,
+.hero-terminal-card{
+    flex: 1 1 380px;
+    min-width: 300px;
+}
+
+.hero-kicker{
+    font-family: "Kode Mono", monospace;
+    font-size: 15px;
+    color: var(--blue);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.4rem;
+}
+
+.hero-title{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 7rem;
+    line-height: 0.95;
+    margin: 0;
+    background: linear-gradient(to right, var(--purple), var(--lighterBlue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.hero-lead{
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--grey);
+    max-width: 30ch;
+    margin-top: 1.6rem;
+}
+
+/* Terminal-styled card (data-driven prompt/value lines). */
+.terminal{
+    font-family: "Kode Mono", monospace;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--grey);
+    padding: 1.5rem 1.6rem;
+}
+
+.terminal-dots{
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1rem;
+}
+
+.terminal-dots span{
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.terminal-dots span:nth-child(1){ background: #ff5f56; }
+.terminal-dots span:nth-child(2){ background: #ffbd2e; }
+.terminal-dots span:nth-child(3){ background: #27c93f; }
+
+.terminal-line + .terminal-line{
+    margin-top: 0.6rem;
+}
+
+.terminal-prompt{
+    color: var(--grey);
+}
+
+.terminal-arrow{
+    color: var(--blue);
+}
+
+.terminal-value{
+    color: var(--white);
+}
+
+.terminal-caret{
+    display: inline-block;
+    width: 9px;
+    height: 1.05em;
+    background: var(--blue);
+    margin-left: 3px;
+    vertical-align: -2px;
+    animation: caret-blink 1s step-end infinite;
+}
+
+@keyframes caret-blink{
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* ---- statBand ---- */
+.stat-band{
+    overflow: visible;
+}
+
+.stat-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.1rem;
+}
+
+.stat-tile{
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+}
+
+.stat-value{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 2.7rem;
+    line-height: 1;
+    color: var(--white);
+}
+
+.stat-label{
+    font-family: "Kode Mono", monospace;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--grey);
+    margin-top: 0.55rem;
+}
+
+/* ---- Numbered write-up header + sub-titles (multiParagraph/basic with index) ---- */
+.numbered-header{
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0 2rem 1rem;
+}
+
+.section-index{
+    font-family: "Kode Mono", monospace;
+    font-size: 14px;
+    color: var(--blue);
+}
+
+.section-subtitle{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--white);
+}
+
+/* Lead paragraph under a section header. */
+.section-lead{
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--grey);
+    padding: 0 2rem 1.4rem;
+    max-width: 72ch;
+}
+
+.section-lead strong{
+    color: var(--white);
+    font-weight: 400;
+}
+
+/* ---- Framed video variant ---- */
+.video-frame{
+    margin-top: 1.4rem;
+}
+
+.video-frame-inner{
+    overflow: hidden;
+    display: flex;
+}
+
+.framed-video{
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    display: block;
+    background: #050310;
+    object-fit: contain;
+    border-radius: calc(1.2rem - 4px);
+}
+
+.video-caption{
+    font-family: "Kode Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--grey);
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 0.9rem;
+}
+
+/* ---- Callout variant of basic ---- */
+.callout{
+    padding: 1.8rem 2rem;
+}
+
+.callout-kicker{
+    font-family: "Kode Mono", monospace;
+    font-size: 13px;
+    color: var(--blue);
+    margin-bottom: 0.8rem;
+}
+
+.callout-body{
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--grey);
+    max-width: 78ch;
+    margin-top: 0.8rem;
+}
+
+/* ---- cta ---- */
+.cta{
+    text-align: center;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.cta-title{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    color: var(--white);
+}
+
+.cta-body{
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--grey);
+    max-width: 60ch;
+    margin: 0 auto 1.8rem;
+}
+
+@media (max-width: 835px) {
+    .hero-title{
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 583px) {
+    .hero-title{
+        font-size: 3.5rem;
+    }
+
+    .hero-lead{
+        font-size: 18px;
+    }
+
+    .numbered-header,
+    .section-lead{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .cta-title{
+        font-size: 2rem;
+    }
+
+    .stat-value{
+        font-size: 2.2rem;
+    }
+}
