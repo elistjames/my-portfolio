@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# my-portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio site for **Eli St. James** — a single-page React app built with
+Vite and React 19.
 
-## Available Scripts
+**Live:** https://elistjames.github.io/my-portfolio/
 
-In the project directory, you can run:
+There is no backend. Every project's content is hardcoded in JS/JSX data files, and the
+contact form posts directly to [EmailJS](https://www.emailjs.com/) from the browser.
 
-### `npm start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 19** + **Vite 8** (esbuild dev, Rolldown build)
+- **react-router-dom 7** — client-side routing
+- **framer-motion** — scroll-driven animation
+- **react-bootstrap** / **bootstrap** — UI components and layout
+- **react-responsive**, **react-icons**
+- **@emailjs/browser** — contact form delivery
+- **Vitest** + **Testing Library** — tests · **ESLint** (flat config) — lint
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting started
 
-### `npm test`
+Requires **Node 20.19+** (22 LTS recommended; CI runs on 22).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm ci            # install exact dependency versions
+npm run dev       # dev server at http://localhost:3000
+```
 
-### `npm run build`
+## Scripts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Dev server on port 3000 (`-- --open` to launch a browser) |
+| `npm run build` | Production bundle into `dist/` |
+| `npm run preview` | Serve the built `dist/` locally with the SPA fallback a static host needs |
+| `npm test` | Run the Vitest suite once |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run lint` | ESLint over the project |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Linting is a **separate step** — Vite does not lint during `dev` or `build`, so run
+`npm run lint` before pushing.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How it works
 
-### `npm run eject`
+The site is one long scrolling landing page plus per-project pages, routed by URL:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `/:section` renders the landing page and scrolls to a DOM section (`landing-title`,
+  `about-me`, `landing-projects`, `lets-connect`).
+- `/project/:id` renders a project page, where `id` indexes into the `ProjectData` array.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Content is the source of truth and lives in two files:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `src/components/LandingProjects.js` — the summary cards on the landing page.
+- `src/components/ProjectData.jsx` — the full per-project pages, expressed as a list of
+  typed **sections** (`SectionType`: `main`, `heroTerminal`, `multiParagraph`, `video`,
+  `beforeAfter`, `statBand`, `pointGrid`, `cta`, …). Each type is rendered by a `case`
+  in `src/pages/ProjectPage.jsx`. Adding a new kind of section means adding a `SectionType`
+  value and a matching render case — the page renders whatever the data holds.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Deeper architecture notes (routing internals, the section-type system, animation, styling,
+and asset conventions) live in [`CLAUDE.md`](./CLAUDE.md).
 
-## Learn More
+```
+src/
+  App.jsx              routing shell, nav, parallax background
+  pages/               LandingPage, ProjectPage (lazy-loaded)
+  components/          section renderers, nav/toolbar, contact form, data files
+  hooks/               small browser-state hooks
+  resources/           images (WebP), videos (mp4)
+  index.css            all global styles and design tokens
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+CI/CD runs on GitHub Actions (`.github/workflows/`):
 
-### Code Splitting
+- **`ci.yml`** — lint, test, and build on every pull request into `master`.
+- **`deploy.yml`** — on merge to `master` (or manually via *Actions → Run workflow*),
+  builds and publishes `dist/` to **GitHub Pages**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Because it's served as a Pages **project site** under `/my-portfolio/`, the build sets
+Vite's `base` and the router `basename` to that path, and the deploy copies `index.html`
+to `404.html` so client-routed deep links survive a hard refresh.
